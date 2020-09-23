@@ -1,0 +1,15 @@
+Intelligent medical diagnosis stands in the center of intelligent medicine intending to predict the disease of a patient given his symptoms.
+Existing researches have applied powerful machine learning algorithms, such as deep learning approaches, to learn the diagnosis pattern from a large amount of clinical data.
+However, these existing works mainly focus on learning the diagnosis model from experience data like clinical records and have not fully exploited the value of medical knowledge, which is also essential for diagnostic reasoning.
+In this work, we propose a knowledge-aware medical diagnosis framework based on medical knowledge graph (KG) and graph convolutional neural network (GCN).
+The medical KG is used to introduce the causality between diseases and symptoms as well as the hierarchy information among medical concepts.
+Our method starts by organizing the patients and the KG in a diagnosis graph through symptom linking.
+Then, it performs GCN layers on the diagnosis graph to aggregate context information for each node. 
+In this way, the patient node can be aware of the possible causes of the symptoms he has shown so as to narrow the searching space for diagnosis, while the medical concepts can capture their relatedness with each other instead of being used as independent ones.
+The obtained representations of nodes are comprehensive since they entail information of themselves as well as medical knowledge.
+Afterwards, we exploit matching module on the new representations of patients and diseases to get their matching scores.
+We have evaluated our proposed method using real-world test data and the results showed that our knowledge-aware framework could improve the effectiveness of medical diagnosis significantly.
+
+
+
+

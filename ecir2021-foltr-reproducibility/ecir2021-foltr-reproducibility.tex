@@ -1,0 +1,77 @@
+\documentclass[runningheads]{llncs}
+\usepackage{graphbox,graphicx}
+\usepackage[labelfont=bf]{caption}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+%\usepackage{fourier} 
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{scalerel}
+
+\usepackage{amsmath, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry} %amsthm
+\usepackage{bm}
+%\usepackage{subfigure}
+
+
+%\lstset{
+%	basicstyle=\scriptsize\ttfamily,
+%	columns=fullflexible,
+%	frame=single,
+%	moredelim=[is][\itshape]{[*}{*]},
+%	breaklines=true,
+%	breakindent=0pt
+%}
+
+\newcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{{\color{red}{#1}}}
+
+\newcommand{\customsymbol}[1]{\scalerel*{\includegraphics{#1}}{`}}
+\begin{document}
+
+\title{Your title}
+%
+%\author{You You\inst{1}\orcidID{} \and
+%		Guido Zuccon\inst{1}\orcidID{0000-0003-0271-5563} \and
+%		XX\inst{1}\orcidID{} \and
+%		XX\inst{1}\orcidID{}}
+
+%\institute{The University of Queensland, St Lucia, Australia}
+
+
+\maketitle
+
+\begin{abstract}
+Abstract goes here
+	\keywords{Your keywords optional }
+\end{abstract}
+
+\input{sections/introduction.tex}
+\input{sections/related_works.tex}
+\input{sections/method.tex}
+
+\input{sections/evaluation.tex}
+
+\input{sections/results.tex}
+
+\input{sections/conclusions.tex}
+
+\makeatletter
+\renewcommand{\@biblabel}[1]{\hfill #1.}
+\makeatother
+
+\subsubsection*{Acknowledgements.}
+TBA
+
+\bibliographystyle{splncs04}
+\bibliography{ecir2021-foltr-reproducibility}
+
+
+%\end{thebibliography}
+
+\end{document}
+
