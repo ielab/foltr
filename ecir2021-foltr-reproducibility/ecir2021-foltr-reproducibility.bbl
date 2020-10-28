@@ -10,6 +10,22 @@ Chapelle, O., Chang, Y.: Yahoo! learning to rank challenge overview. In:
   Proceedings, vol.~14, pp. 1--24. JMLR.org (2011),
   \url{http://proceedings.mlr.press/v14/chapelle11a.html}
 
+\bibitem{DBLP:journals/corr/KonecnyMRR16}
+Konecn{\'{y}}, J., McMahan, H.B., Ramage, D., Richt{\'{a}}rik, P.: Federated
+  optimization: Distributed machine learning for on-device intelligence. CoRR
+  \textbf{abs/1610.02527} (2016), \url{http://arxiv.org/abs/1610.02527}
+
+\bibitem{DBLP:journals/corr/KonecnyMYRSB16}
+Konecn{\'{y}}, J., McMahan, H.B., Yu, F.X., Richt{\'{a}}rik, P., Suresh, A.T.,
+  Bacon, D.: Federated learning: Strategies for improving communication
+  efficiency. CoRR  \textbf{abs/1610.05492} (2016),
+  \url{http://arxiv.org/abs/1610.05492}
+
+\bibitem{mcmahan2016federated}
+McMahan, H.B., Moore, E., Ramage, D., y~Arcas, B.A.: Federated learning of deep
+  networks using model averaging. corr abs/1602.05629 (2016). arXiv preprint
+  arXiv:1602.05629  (2016)
+
 \bibitem{DBLP:journals/corr/QinL13}
 Qin, T., Liu, T.: Introducing {LETOR} 4.0 datasets. CoRR
   \textbf{abs/1306.2597} (2013), \url{http://arxiv.org/abs/1306.2597}
@@ -23,5 +39,10 @@ Salimans, T., Ho, J., Chen, X., Sidor, S., Sutskever, I.: Evolution strategies
 Williams, R.J.: Simple statistical gradient-following algorithms for
   connectionist reinforcement learning. Machine learning  \textbf{8}(3-4),
   229--256 (1992)
+
+\bibitem{yang2019federated}
+Yang, Q., Liu, Y., Chen, T., Tong, Y.: Federated machine learning: Concept and
+  applications. ACM Transactions on Intelligent Systems and Technology (TIST)
+  \textbf{10}(2),  1--19 (2019)
 
 \end{thebibliography}
