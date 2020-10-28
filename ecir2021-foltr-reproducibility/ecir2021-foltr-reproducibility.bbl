@@ -1,6 +1,27 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{DBLP:journals/jmlr/ChapelleC11}
+Chapelle, O., Chang, Y.: Yahoo! learning to rank challenge overview. In:
+  Chapelle, O., Chang, Y., Liu, T. (eds.) Proceedings of the Yahoo! Learning to
+  Rank Challenge, held at {ICML} 2010, Haifa, Israel, June 25, 2010. {JMLR}
+  Proceedings, vol.~14, pp. 1--24. JMLR.org (2011),
+  \url{http://proceedings.mlr.press/v14/chapelle11a.html}
+
+\bibitem{DBLP:journals/corr/QinL13}
+Qin, T., Liu, T.: Introducing {LETOR} 4.0 datasets. CoRR
+  \textbf{abs/1306.2597} (2013), \url{http://arxiv.org/abs/1306.2597}
+
+\bibitem{salimans2017evolution}
+Salimans, T., Ho, J., Chen, X., Sidor, S., Sutskever, I.: Evolution strategies
+  as a scalable alternative to reinforcement learning. arXiv preprint
+  arXiv:1703.03864  (2017)
+
+\bibitem{williams1992simple}
+Williams, R.J.: Simple statistical gradient-following algorithms for
+  connectionist reinforcement learning. Machine learning  \textbf{8}(3-4),
+  229--256 (1992)
 
 \end{thebibliography}

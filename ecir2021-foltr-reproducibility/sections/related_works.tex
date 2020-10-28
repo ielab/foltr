@@ -1,11 +1,18 @@
 \section{Related Work}
 
-This section gives a brief overview of traditional LTR, OLTR and federated learning. \\
-\\
-1.offline learning to rank\\
-2.online learning to rank\\
-Main challenges in online learning to rank problem are: (a) noise and biases of user interactions, (b) non-continuous metrics for optimization.\\
-3.federated machine learning\\
+This section gives a brief overview of traditional LTR, OLTR and federated learning. 
+
+\subsection{Offline Learning to Rank}
+The core of Learning to Rank (LTR) is to train a ranking model using Machine Learning methods.
+
+\subsection{Online Learning to Rank}
+Main challenges in online learning to rank problem are: (a) noise and biases of user interactions, (b) non-continuous metrics for optimization.
+
+OLTR updates the ranker through user's online feedback, more specifically, user's click data. Unlike traditional LTR methods, OLTR doesn't need human-annotated data, which is expensive and time-consuming to create. Besides, human-annotated data can not always represent true preference of users. Traditional LTR methods are more suitable in situation where one ranking list fits all users. In a continuously developing world, people's preference and answers to one search query may change or differ from other's. OLTR provides a better way to learning from users' feedback in order to improve users' experience and ranking effectiveness.
+
+\subsection{Federated Machine Learning}
+
+
 
 
 

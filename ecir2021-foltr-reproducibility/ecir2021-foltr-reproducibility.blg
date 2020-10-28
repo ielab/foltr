@@ -2,47 +2,47 @@ This is BibTeX, Version 0.99d (TeX Live 2020)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: ecir2021-foltr-reproducibility.aux
 The style file: splncs04.bst
-I found no \citation commands---while reading file ecir2021-foltr-reproducibility.aux
 Database file #1: ecir2021-foltr-reproducibility.bib
-You've used 0 entries,
+Warning--I didn't find a database entry for ""
+You've used 4 entries,
             2850 wiz_defined-function locations,
-            593 strings with 4522 characters,
-and the built_in function-call counts, 24 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            627 strings with 5421 characters,
+and the built_in function-call counts, 2197 in all, are:
+= -- 172
+> -- 68
+< -- 5
++ -- 27
+- -- 23
+* -- 147
+:= -- 290
+add.period$ -- 6
+call.type$ -- 4
+change.case$ -- 24
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 4
+duplicate$ -- 205
+empty$ -- 196
+format.name$ -- 27
+if$ -- 467
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 6
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 4
+missing$ -- 44
+newline$ -- 18
+num.names$ -- 10
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 18
 quote$ -- 0
-skip$ -- 1
+skip$ -- 52
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 103
+swap$ -- 113
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 16
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 5
-(There was 1 error message)
+while$ -- 19
+width$ -- 5
+write$ -- 48
+(There was 1 warning)

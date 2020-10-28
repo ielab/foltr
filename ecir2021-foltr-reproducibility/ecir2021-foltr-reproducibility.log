@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.8)  23 SEP 2020 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.20)  28 OCT 2020 00:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -707,44 +707,73 @@ LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7> not available
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
 (Font)              Font shape `U/wasy/m/n' tried instead on input line 47.
 
-(./sections/introduction.tex) (./sections/related_works.tex)
-(./sections/method.tex) (./sections/evaluation.tex) (./sections/results.tex)
-(./sections/conclusions.tex) (./ecir2021-foltr-reproducibility.bbl
+(./sections/introduction.tex) (./sections/related_works.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--1
 
-LaTeX Warning: Empty `thebibliography' environment on input line 6.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--1
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--1
+
+ []
+
+) (./sections/method.tex [1
+
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]) (.
+/sections/evaluation.tex [3])
+(./sections/results.tex) (./sections/conclusions.tex)
+(./ecir2021-foltr-reproducibility.bbl
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 11.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 11.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 76.
- [1
-
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+ [4]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 76.
-
-(./ecir2021-foltr-reproducibility.aux)
+ (./ecir2021-foltr-reproducibility.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 76.
 Package rerunfilecheck Info: File `ecir2021-foltr-reproducibility.out' has not 
 changed.
-(rerunfilecheck)             Checksum: 5FC784B01F6728B6F4A4D4147951BE48;45.
+(rerunfilecheck)             Checksum: 996468A682738E20D5292C1D7F1BBD28;120.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 76.
  ) 
 Here is how much of TeX's memory you used:
- 10863 strings out of 480608
- 160632 string characters out of 5903631
- 434881 words of memory out of 5000000
- 26514 multiletter control sequences out of 15000+600000
- 539984 words of font info for 54 fonts, out of 8000000 for 9000
+ 10928 strings out of 480608
+ 161500 string characters out of 5903629
+ 440063 words of memory out of 5000000
+ 26541 multiletter control sequences out of 15000+600000
+ 545262 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,5n,42p,940b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,42p,940b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on ecir2021-foltr-reproducibility.pdf (1 page, 62272 bytes).
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
+local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
+cal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
+exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
+ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
+/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2
+020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ecir2021-foltr-reproducibility.pdf (4 pages, 173698 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  9 words of extra memory for PDF output out of 10000 (max. 10000000)
 

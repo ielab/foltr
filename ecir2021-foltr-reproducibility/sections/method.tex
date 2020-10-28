@@ -4,13 +4,13 @@
 
 federated online learning to rank with evolution strategies:\\
 In this work, Online Learning to Rank problem is extended to Federated Learning setup using Evolution Strategies optimization, which is widely used in Reinforcement Learning algorithm.\\
-The FOLtR-ES algorithm contains three parts. First, it follows federated learning optimization scenario. Second, it uses Evolution Strategies to estimate gradients. Finally, it introduces a privatization procedure to protect users' privacy.\\
-\\
-3.1 Optimization Scenario\\
-The optimization scenario can be illustrated as several steps. First, the client downloads the most recently updated ranking model from the server. After $B$ interactions is performed by the client, the performance metrics of the these interactions are averaged in the client side and a privatized message is sent to the centralized server. After receiving messages from $N$ clients, the server combines them to estimate a single gradient g and performs an optimization step to update the current ranking model. Finally, the clients download the newly updated model from the server.\\
-\\
-3.2 Gradient Estimation\\
-Assume that the ranking model comes from a parametric family indexed by vector $\theta \in R^{n}$. Each time a user $u$ has an interaction $a$, the ranking quality is denoted as $f$. The goal of optimization is to find model vector $\theta^*$ that can maximize the mean of metric $f$ across all interactions $a$ from all users $u$:\\
+The FOLtR-ES algorithm contains three parts. First, it follows federated learning optimization scenario. Second, it uses Evolution Strategies to estimate gradients. Finally, it introduces a privatization procedure to protect users' privacy.
+
+\subsection{ Optimization Scenario}
+The optimization scenario can be illustrated as several steps. First, the client downloads the most recently updated ranking model from the server. After $B$ interactions is performed by the client, the performance metrics of the these interactions are averaged in the client side and a privatized message is sent to the centralized server. After receiving messages from $N$ clients, the server combines them to estimate a single gradient g and performs an optimization step to update the current ranking model. Finally, the clients download the newly updated model from the server.
+
+\subsection{Gradient Estimation}
+Assume that the ranking model comes from a parametric family indexed by vector $\theta \in R^{n}$. Each time a user $u$ has an interaction $a$, the ranking quality is denoted as $f$. The goal of optimization is to find model vector $\theta^*$ that can maximize the mean of metric $f$ across all interactions $a$ from all users $u$:
 \begin{equation}
 	\theta^{*}=\arg \max _{\theta} F(\theta)=\arg \max _{\theta} \mathbb{E}_{u} \mathbb{E}_{a \mid u, \theta} f(a ; \theta, u)
 \end{equation}
@@ -33,12 +33,15 @@ Based on federated optimization scenario, $\theta$ is sampled independently on c
 \begin{equation}
 	g=\mathbb{E}_{u} \mathbb{E}_{\theta \sim p_{\phi}(\theta)}\left[\left(\mathbb{E}_{a \mid u, \theta} f(a ; \theta, u)\right) \cdot \frac{1}{\sigma^{2}}(\theta-\phi)\right]
 \end{equation}
-To get the estimate $\hat{g}$ of $g$ from Equation (5), $\hat{g} \approx g$, following steps are adopted: (a) each client $u$ randomly generates a pseudo-random seed $s$ and uses the seed to sample a perturbed model $\theta_{s} \sim \mathbb{N}\left(\phi, \sigma^{2} I\right)$, (b) uses the average of metric $f$ over $B$ interactions to estimate the expected loss $\hat{f} \approx \mathbb{E}_{a \mid u, \theta_{s}} f(a;\theta_s, u) $ from Equation (5), (c) communicates the message tuple $(s,\hat{f})$ to the server, (d) the centralized server can get the estimate $\hat{g}$ of Equation (5) according to all message sent from $N$ clients.\\
-To reduce the variance of gradient estimates, means of antithetic variates are used in FOLtR-ES, which is also a ES trick~\cite{salimans2017evolution}. The algorithm in gradient estimation follows standard ES except that the random seeds are sampled in client side.\\
-\\
-3.3 Privatization Procedure\\
-To ensure that the clients' privacy is fully protected, FOLtR-ES proposes a privatization procedure that introduces privatization noise in the communication procedure  between clients and the server.\\
-Assume that the metric used on client side is discrete or can be discretized if continuous. Thus the metric takes a finite number ($n$) of values, $f_0, f_1, ..., f_{n-1}$. For each time the client experiences interaction, the true value of the metric is denoted as $f_0$ and the rest of $n-1$ values are different from $f_0$. In privatization procedure, true metric value $f_0$ is sent with probability $p$. Otherwise, with probability $1-p$, send the randomly selected value $\hat{f}$ out of the remaining $n-1$ values. To ensure the same optimization goal described in section 3.3, FOLtR-ES assumes that the probability $p > 1/n$.\\
+To get the estimate $\hat{g}$ of $g$ from Equation (5), $\hat{g} \approx g$, following steps are adopted: (a) each client $u$ randomly generates a pseudo-random seed $s$ and uses the seed to sample a perturbed model $\theta_{s} \sim \mathbb{N}\left(\phi, \sigma^{2} I\right)$, (b) uses the average of metric $f$ over $B$ interactions to estimate the expected loss $\hat{f} \approx \mathbb{E}_{a \mid u, \theta_{s}} f(a;\theta_s, u) $ from Equation (5), (c) communicates the message tuple $(s,\hat{f})$ to the server, (d) the centralized server can get the estimate $\hat{g}$ of Equation (5) according to all message sent from $N$ clients.
+
+To reduce the variance of gradient estimates, means of antithetic variates are used in FOLtR-ES, which is also a ES trick~\cite{salimans2017evolution}. The algorithm in gradient estimation follows standard ES except that the random seeds are sampled in client side.
+
+\subsection{Privatization Procedure}
+To ensure that the clients' privacy is fully protected, FOLtR-ES proposes a privatization procedure that introduces privatization noise in the communication procedure  between clients and the server.
+
+Assume that the metric used on client side is discrete or can be discretized if continuous. Thus the metric takes a finite number ($n$) of values, $f_0, f_1, ..., f_{n-1}$. For each time the client experiences interaction, the true value of the metric is denoted as $f_0$ and the rest of $n-1$ values are different from $f_0$. In privatization procedure, true metric value $f_0$ is sent with probability $p$. Otherwise, with probability $1-p$, send the randomly selected value $\hat{f}$ out of the remaining $n-1$ values. To ensure the same optimization goal described in section 3.3, FOLtR-ES assumes that the probability $p > 1/n$.
+
 Unlike other Federated Learning work, FOLtR-ES adopts a strict notion of $\epsilon$-local differential privacy~\cite{}, in which the privacy is considered at the level of client side instead of the server. Through the privatization procedure, $\epsilon$-local differential privacy is achieved. And the upper bound of $\epsilon$ is:
 \begin{equation}
 	\epsilon \leq log\frac{p(n-1)}{1-p} 

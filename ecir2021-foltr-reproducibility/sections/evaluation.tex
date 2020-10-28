@@ -2,31 +2,26 @@
 
 
 
-1. datasets\\
-The datasets we use are MQ2007 and MQ2008[1], MLSR-WEB10K[1], Yahoo! Webscope[2] and Istella[3] datasets.\\
-MQ2007 dataset contains 1692 unique queries and 69623 relevance labels. MQ2008 dataset contains 784 unique queries and 15211 relevance labels. For MQ2007 and MQ2008 dataset, each query-document pair contains 46 features.\\
-Each dataset is provided with five splits, except for ...\\
-We use the original dataset in training and validating procedure without any preprocessing, such as feature normalization.\\
-2. evaluation metric\\
-3. baselines\\
-4. models\\
-5. click models: we simulate uses by applying an instance of Position Biased Model (PBM) [x]\\
-(further explain about PBM)\\
-table for PBM we use\\
+\subsection{Datasets}
+The datasets we use are MQ2007 and MQ2008~\cite{DBLP:journals/corr/QinL13}, MLSR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11} datasets. More detailed information for each dataset can be found in Table X.
 
-[1]Tao Qin and Tie-Yan Liu. 2013. Introducing LETOR 4.0 datasets. arXiv:1306.2597 (2013)
-[2]Chapelle, O., Chang, Y.: Yahoo! learning to rank challenge overview. J. Mach. Learn. Res. 14, 1–24 (2011)
-[3]Dato, D., Lucchese, C., Nardini, F.M., Orlando, S., Perego, R., Tonellotto, N., Venturini, R.: Fast ranking with additive ensembles of oblivious and non-oblivious regression trees. ACM Trans. Inform. Syst. (TOIS), 35(2) (2016). Article 15
+MQ2007 dataset contains 1692 unique queries and 69623 relevance labels. MQ2008 dataset contains 784 unique queries and 15211 relevance labels. For MQ2007 and MQ2008 dataset, each query-document pair contains 46 features.
 
-@article{DBLP:journals/corr/QinL13,
-	author    = {Tao Qin and
-		Tie{-}Yan Liu},
-	title     = {Introducing {LETOR} 4.0 Datasets},
-	journal   = {CoRR},
-	volume    = {abs/1306.2597},
-	year      = {2013},
-	url       = {http://arxiv.org/abs/1306.2597},
-	timestamp = {Mon, 01 Jul 2013 20:31:25 +0200},
-	biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/QinL13},
-	bibsource = {dblp computer science bibliography, http://dblp.org}
-}
+Each dataset is provided with five splits, except for Yahoo! Webscope.
+
+We use the original dataset in training and validating procedure without any preprocessing, such as feature normalization.
+
+\subsection{evaluation metric}
+
+\subsection{baselines}
+
+
+\subsection{models}
+
+\subsection{click models}
+we simulate uses by applying an instance of Cascade Click Model (CCM)~\cite{}
+
+(further explain about CCM)
+
+(table for CCM we use)
+
