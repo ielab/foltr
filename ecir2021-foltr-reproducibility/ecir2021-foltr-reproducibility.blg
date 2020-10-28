@@ -3,46 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: ecir2021-foltr-reproducibility.aux
 The style file: splncs04.bst
 Database file #1: ecir2021-foltr-reproducibility.bib
+Warning--I didn't find a database entry for "bibid"
 Warning--I didn't find a database entry for ""
-You've used 8 entries,
+You've used 9 entries,
             2850 wiz_defined-function locations,
-            652 strings with 6448 characters,
-and the built_in function-call counts, 4342 in all, are:
-= -- 329
-> -- 166
-< -- 9
-+ -- 67
-- -- 59
-* -- 300
-:= -- 584
-add.period$ -- 10
-call.type$ -- 8
-change.case$ -- 54
+            658 strings with 6646 characters,
+and the built_in function-call counts, 4907 in all, are:
+= -- 383
+> -- 173
+< -- 10
++ -- 70
+- -- 61
+* -- 328
+:= -- 652
+add.period$ -- 12
+call.type$ -- 9
+change.case$ -- 60
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 400
-empty$ -- 369
-format.name$ -- 67
-if$ -- 906
+cite$ -- 9
+duplicate$ -- 451
+empty$ -- 427
+format.name$ -- 69
+if$ -- 1039
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 90
-newline$ -- 30
-num.names$ -- 18
-pop$ -- 159
+int.to.str$ -- 9
+missing$ -- 98
+newline$ -- 33
+num.names$ -- 20
+pop$ -- 176
 preamble$ -- 1
-purify$ -- 44
+purify$ -- 47
 quote$ -- 0
-skip$ -- 91
+skip$ -- 113
 stack$ -- 0
-substring$ -- 174
-swap$ -- 218
-text.length$ -- 9
+substring$ -- 219
+swap$ -- 243
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 32
+type$ -- 36
 warning$ -- 0
-while$ -- 34
-width$ -- 9
-write$ -- 89
-(There was 1 warning)
+while$ -- 40
+width$ -- 10
+write$ -- 99
+(There were 2 warnings)

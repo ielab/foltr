@@ -10,6 +10,11 @@ Chapelle, O., Chang, Y.: Yahoo! learning to rank challenge overview. In:
   Proceedings, vol.~14, pp. 1--24. JMLR.org (2011),
   \url{http://proceedings.mlr.press/v14/chapelle11a.html}
 
+\bibitem{kharitonov2019federated}
+Kharitonov, E.: Federated online learning to rank with evolution strategies.
+  In: Proceedings of the Twelfth ACM International Conference on Web Search and
+  Data Mining. pp. 249--257 (2019)
+
 \bibitem{DBLP:journals/corr/KonecnyMRR16}
 Konecn{\'{y}}, J., McMahan, H.B., Ramage, D., Richt{\'{a}}rik, P.: Federated
   optimization: Distributed machine learning for on-device intelligence. CoRR
