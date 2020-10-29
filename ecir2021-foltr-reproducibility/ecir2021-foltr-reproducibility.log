@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.8)  28 OCT 2020 21:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.8)  30 OCT 2020 09:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -449,6 +449,14 @@ Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \LMex=\skip70
 \LMpt=\skip71
 )
+(/usr/local/texlive/2020/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count303
+\float@exts=\toks25
+\float@box=\box98
+\@float@everytoks=\toks26
+\@floatcapt=\box99
+)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip72
@@ -459,7 +467,7 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks25
+\@emptytoks=\toks27
 \ex@=\dimen193
 ))
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -469,41 +477,41 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count303
+\inf@bad=\count304
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count304
-\leftroot@=\count305
+\uproot@=\count305
+\leftroot@=\count306
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count306
-\DOTSCASE@=\count307
+\classnum@=\count307
+\DOTSCASE@=\count308
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box98
-\strutbox@=\box99
+\Mathstrutbox@=\box100
+\strutbox@=\box101
 \big@size=\dimen195
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count308
-\c@MaxMatrixCols=\count309
+\macc@depth=\count309
+\c@MaxMatrixCols=\count310
 \dotsspace@=\muskip17
-\c@parentequation=\count310
-\dspbrk@lvl=\count311
-\tag@help=\toks26
-\row@=\count312
-\column@=\count313
-\maxfields@=\count314
-\andhelp@=\toks27
+\c@parentequation=\count311
+\dspbrk@lvl=\count312
+\tag@help=\toks28
+\row@=\count313
+\column@=\count314
+\maxfields@=\count315
+\andhelp@=\toks29
 \eqnshift@=\dimen196
 \alignsep@=\dimen197
 \tagshift@=\dimen198
 \tagwidth@=\dimen199
 \totwidth@=\dimen256
 \lineht@=\dimen257
-\@envbody=\toks28
+\@envbody=\toks30
 \multlinegap=\skip73
 \multlinetaggap=\skip74
-\mathdisplay@stack=\toks29
+\mathdisplay@stack=\toks31
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
@@ -529,8 +537,8 @@ LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks30
-\verbatim@line=\toks31
+\every@verbatim=\toks32
+\verbatim@line=\toks33
 \verbatim@in@stream=\read2
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/bbm-macros/bbm.sty
@@ -546,9 +554,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count315
-\Gm@cntv=\count316
-\c@Gm@tempcnt=\count317
+\Gm@cnth=\count316
+\Gm@cntv=\count317
+\c@Gm@tempcnt=\count318
 \Gm@bindingoffset=\dimen258
 \Gm@wd@mp=\dimen259
 \Gm@odd@mp=\dimen260
@@ -557,7 +565,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen263
 \Gm@layouthoffset=\dimen264
 \Gm@layoutvoffset=\dimen265
-\Gm@dimlist=\toks32
+\Gm@dimlist=\toks34
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
@@ -575,8 +583,8 @@ Package: cite 2015/02/27  v 5.5
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count318
-\l__pdf_internal_box=\box100
+\l__kernel_color_stack_int=\count319
+\l__pdf_internal_box=\box102
 )
 (./ecir2021-foltr-reproducibility.aux)
 \openout1 = `ecir2021-foltr-reproducibility.aux'.
@@ -600,17 +608,17 @@ LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count319
+\scratchcounter=\count320
 \scratchdimen=\dimen266
-\scratchbox=\box101
-\nofMPsegments=\count320
-\nofMParguments=\count321
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count322
+\scratchbox=\box103
+\nofMPsegments=\count321
+\nofMParguments=\count322
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count323
 \MPscratchDim=\dimen267
-\MPnumerator=\count323
-\makeMPintoPDFobject=\count324
-\everyMPtoPDFconversion=\toks34
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
+\everyMPtoPDFconversion=\toks36
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -621,11 +629,12 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count325
-\AtBeginShipoutBox=\box102
+\c@lstlisting=\count326
+\AtBeginShipoutBox=\box104
 Package hyperref Info: Link coloring OFF on input line 35.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -638,7 +647,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count326
+\c@section@level=\count327
 )
 LaTeX Info: Redefining \ref on input line 35.
 LaTeX Info: Redefining \pageref on input line 35.
@@ -726,19 +735,62 @@ LaTeX Warning: Citation `bibid' on page 1 undefined on input line 6.
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./sec
 tions/method.tex [2] [3])
-(./sections/evaluation.tex) (./sections/results.tex)
-(./sections/conclusions.tex) (./ecir2021-foltr-reproducibility.bbl
+(./sections/evaluation.tex
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 11.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 15.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 11.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 15.
 
-[4])
+[4] [5]) (./sections/results.tex
+<./images/v0_mq2007_foltr_clients_p0.9.png, id=100, 1040.688pt x 551.4201pt>
+File: ./images/v0_mq2007_foltr_clients_p0.9.png Graphic file (type png)
+<use ./images/v0_mq2007_foltr_clients_p0.9.png>
+Package pdftex.def Info: ./images/v0_mq2007_foltr_clients_p0.9.png  used on inp
+ut line 12.
+(pdftex.def)             Requested size: 455.25224pt x 227.62346pt.
+
+Overfull \hbox (25.24762pt too wide) in paragraph at lines 12--13
+ [][] 
+ []
+
+<./images/v0_mq2007_foltr_vs_pdgd_2000clients_p1.0.png, id=102, 1040.688pt x 55
+2.8655pt>
+File: ./images/v0_mq2007_foltr_vs_pdgd_2000clients_p1.0.png Graphic file (type 
+png)
+<use ./images/v0_mq2007_foltr_vs_pdgd_2000clients_p1.0.png>
+Package pdftex.def Info: ./images/v0_mq2007_foltr_vs_pdgd_2000clients_p1.0.png 
+ used on input line 24.
+(pdftex.def)             Requested size: 455.25224pt x 227.62115pt.
+
+Overfull \hbox (25.24762pt too wide) in paragraph at lines 24--25
+ [][] 
+ []
+
+[6 <./images/v0_mq2007_foltr_clients_p0.9.png>]
+<./images/v0_mslr_foltr_vs_pdgd_2000clients_p1.0.png, id=115, 1040.688pt x 552.
+8655pt>
+File: ./images/v0_mslr_foltr_vs_pdgd_2000clients_p1.0.png Graphic file (type pn
+g)
+<use ./images/v0_mslr_foltr_vs_pdgd_2000clients_p1.0.png>
+Package pdftex.def Info: ./images/v0_mslr_foltr_vs_pdgd_2000clients_p1.0.png  u
+sed on input line 31.
+(pdftex.def)             Requested size: 455.25224pt x 227.62115pt.
+
+Overfull \hbox (25.24762pt too wide) in paragraph at lines 31--32
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./images/v0_mq2007_foltr_vs_pdgd_2000clients_p1.0.png>]) (./sections/concl
+usions.tex) (./ecir2021-foltr-reproducibility.bbl [8 <./images/v0_mslr_foltr_vs
+_pdgd_2000clients_p1.0.png>])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
- [5]
+ [9]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
  (./ecir2021-foltr-reproducibility.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 81.
@@ -753,13 +805,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
  ) 
 Here is how much of TeX's memory you used:
- 11026 strings out of 480608
- 162909 string characters out of 5903631
- 441228 words of memory out of 5000000
- 26630 multiletter control sequences out of 15000+600000
+ 11130 strings out of 480608
+ 165138 string characters out of 5903631
+ 445392 words of memory out of 5000000
+ 26707 multiletter control sequences out of 15000+600000
  545262 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,42p,1239b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,9n,42p,1239b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -767,17 +819,19 @@ usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
 local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
-cal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
-exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
-ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
-/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2
-020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ecir2021-foltr-reproducibility.pdf (5 pages, 178991 bytes).
+cal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loca
+l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
+texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2
+020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/202
+0/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2020/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ecir2021-foltr-reproducibility.pdf (9 pages, 717047 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 186 compressed objects within 2 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 24 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,45 +5,45 @@ The style file: splncs04.bst
 Database file #1: ecir2021-foltr-reproducibility.bib
 Warning--I didn't find a database entry for "bibid"
 Warning--I didn't find a database entry for ""
-You've used 9 entries,
+You've used 15 entries,
             2850 wiz_defined-function locations,
-            658 strings with 6646 characters,
-and the built_in function-call counts, 4907 in all, are:
-= -- 383
-> -- 173
-< -- 10
-+ -- 70
-- -- 61
-* -- 328
-:= -- 652
-add.period$ -- 12
-call.type$ -- 9
-change.case$ -- 60
+            703 strings with 8534 characters,
+and the built_in function-call counts, 9109 in all, are:
+= -- 745
+> -- 314
+< -- 15
++ -- 124
+- -- 109
+* -- 599
+:= -- 1188
+add.period$ -- 30
+call.type$ -- 15
+change.case$ -- 106
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 451
-empty$ -- 427
-format.name$ -- 69
-if$ -- 1039
+cite$ -- 15
+duplicate$ -- 811
+empty$ -- 795
+format.name$ -- 126
+if$ -- 1973
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 98
-newline$ -- 33
-num.names$ -- 20
-pop$ -- 176
+int.to.str$ -- 15
+missing$ -- 172
+newline$ -- 51
+num.names$ -- 38
+pop$ -- 317
 preamble$ -- 1
-purify$ -- 47
+purify$ -- 77
 quote$ -- 0
-skip$ -- 113
+skip$ -- 226
 stack$ -- 0
-substring$ -- 219
-swap$ -- 243
-text.length$ -- 10
+substring$ -- 465
+swap$ -- 443
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
+type$ -- 60
 warning$ -- 0
-while$ -- 40
-width$ -- 10
-write$ -- 99
+while$ -- 76
+width$ -- 17
+write$ -- 171
 (There were 2 warnings)

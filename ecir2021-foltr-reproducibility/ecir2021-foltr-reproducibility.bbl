@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
@@ -10,10 +10,30 @@ Chapelle, O., Chang, Y.: Yahoo! learning to rank challenge overview. In:
   Proceedings, vol.~14, pp. 1--24. JMLR.org (2011),
   \url{http://proceedings.mlr.press/v14/chapelle11a.html}
 
+\bibitem{DBLP:conf/wsdm/GuoLW09}
+Guo, F., Liu, C., Wang, Y.M.: Efficient multiple-click models in web search.
+  In: Baeza{-}Yates, R., Boldi, P., Ribeiro{-}Neto, B.A., Cambazoglu, B.B.
+  (eds.) Proceedings of the Second International Conference on Web Search and
+  Web Data Mining, {WSDM} 2009, Barcelona, Spain, February 9-11, 2009. pp.
+  124--131. {ACM} (2009). \doi{10.1145/1498759.1498818},
+  \url{https://doi.org/10.1145/1498759.1498818}
+
+\bibitem{DBLP:conf/wsdm/HofmannSWR13}
+Hofmann, K., Schuth, A., Whiteson, S., de~Rijke, M.: Reusing historical
+  interaction data for faster online learning to rank for {IR}. In: Leonardi,
+  S., Panconesi, A., Ferragina, P., Gionis, A. (eds.) Sixth {ACM} International
+  Conference on Web Search and Data Mining, {WSDM} 2013, Rome, Italy, February
+  4-8, 2013. pp. 183--192. {ACM} (2013). \doi{10.1145/2433396.2433419},
+  \url{https://doi.org/10.1145/2433396.2433419}
+
 \bibitem{kharitonov2019federated}
 Kharitonov, E.: Federated online learning to rank with evolution strategies.
   In: Proceedings of the Twelfth ACM International Conference on Web Search and
   Data Mining. pp. 249--257 (2019)
+
+\bibitem{kingma2014adam}
+Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. arXiv
+  preprint arXiv:1412.6980  (2014)
 
 \bibitem{DBLP:journals/corr/KonecnyMRR16}
 Konecn{\'{y}}, J., McMahan, H.B., Ramage, D., Richt{\'{a}}rik, P.: Federated
@@ -31,6 +51,16 @@ McMahan, H.B., Moore, E., Ramage, D., y~Arcas, B.A.: Federated learning of deep
   networks using model averaging. corr abs/1602.05629 (2016). arXiv preprint
   arXiv:1602.05629  (2016)
 
+\bibitem{oosterhuis2018differentiable}
+Oosterhuis, H., de~Rijke, M.: Differentiable unbiased online learning to rank.
+  In: Proceedings of the 27th ACM International Conference on Information and
+  Knowledge Management. pp. 1293--1302 (2018)
+
+\bibitem{oosterhuis2016probabilistic}
+Oosterhuis, H., Schuth, A., de~Rijke, M.: Probabilistic multileave gradient
+  descent. In: European Conference on Information Retrieval. pp. 661--668.
+  Springer (2016)
+
 \bibitem{DBLP:journals/corr/QinL13}
 Qin, T., Liu, T.: Introducing {LETOR} 4.0 datasets. CoRR
   \textbf{abs/1306.2597} (2013), \url{http://arxiv.org/abs/1306.2597}
@@ -39,6 +69,14 @@ Qin, T., Liu, T.: Introducing {LETOR} 4.0 datasets. CoRR
 Salimans, T., Ho, J., Chen, X., Sidor, S., Sutskever, I.: Evolution strategies
   as a scalable alternative to reinforcement learning. arXiv preprint
   arXiv:1703.03864  (2017)
+
+\bibitem{DBLP:conf/wsdm/SchuthOWR16}
+Schuth, A., Oosterhuis, H., Whiteson, S., de~Rijke, M.: Multileave gradient
+  descent for fast online learning to rank. In: Bennett, P.N., Josifovski, V.,
+  Neville, J., Radlinski, F. (eds.) Proceedings of the Ninth {ACM}
+  International Conference on Web Search and Data Mining, San Francisco, CA,
+  USA, February 22-25, 2016. pp. 457--466. {ACM} (2016).
+  \doi{10.1145/2835776.2835804}, \url{https://doi.org/10.1145/2835776.2835804}
 
 \bibitem{williams1992simple}
 Williams, R.J.: Simple statistical gradient-following algorithms for
