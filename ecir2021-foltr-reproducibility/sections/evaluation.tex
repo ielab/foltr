@@ -38,36 +38,51 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 
 \begin{table}
 	\caption{Three click model instantiations for MQ2007 dataset}
-	\label{table:1:dataset}
+	\label{table:2:mq2007}
 	\centering
-	\begin{tabular}{l c c c}
+	\begin{tabular}{l c c c c c c}
 		%\lsptoprule
 		\hline
-		& & number of & \\
-		& queries&  relevance labels  & features \\
+		&&$P(click = 1 | r)$ &&& $P(stop = 1 | r)$  & \\
+		& r = 0&  r = 1  & r = 2 & r = 0&  r = 1  & r = 2\\
 		\midrule
-		MQ2007  &   1692  &    69623  &    46    \\
+		perfect  &   0.0  &    0.5  &    1.0 & 0.0 & 0.0 & 0.0   \\
 		%\hline
-		MQ2008  &  784  &   15211  &    46    \\
+		navigational  &  0.05  &   0.5  &    0.95  & 0.2 & 0.5 & 0.9  \\
 		%\hline
-		MLSR-WEB10K  &   XXX &   XXX  &    136  \\
+		informational  &   0.4 &   0.7  &    0.9 & 0.1 & 0.3 & 0.5 \\
 		%\lspbottomrule
 		\hline
 	\end{tabular}
 \end{table}
 
+\begin{table}
+	\caption{Three click model instantiations for MLSR-WEB10K dataset}
+	\label{table:3:MLSR-WEB10K}
+	\centering
+	\begin{tabular}{l c c c c c c c c c c}
+		%\lsptoprule
+		\hline
+		&&&$P(click = 1 | r)$ &&&&& $P(stop = 1 | r)$  && \\
+		& r = 0&  r = 1  & r = 2 & r = 3 & r = 4 & r = 0&  r = 1  & r = 2 & r = 3 & r = 4\\
+		\midrule
+		perfect  &   0.0  &    0.2  &   0.4  & 0.8 & 1.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+		%\hline
+		navigational  &  0.05  &   0.3  &    0.5  & 0.7 & 0.95 & 0.2  & 0.3  & 0.5  & 0.7 & 0.9  \\
+		%\hline
+		informational  &   0.4 &   0.6  &   0.7 & 0.8 & 0.9  & 0.1  & 0.2 & 0.3 & 0.4 & 0.5 \\
+		%\lspbottomrule
+		\hline
+	\end{tabular}
+\end{table}
 
 \subsection{Evaluation metric}
+As FOLtR-ES is designed to allow optimization based on any absolute measures of ranking quality, we can extend the original methods to other widely used evaluation metrics for OLTR. For better reproducing and comparison with the original algorithm, we choose the reciprocal rank of the highest clicked result in each interaction, which is the same quality metric used in the original methods. We also use Discounted Cumulative Gain (DCG) to evaluate the users' experience in each interaction and NDCG@10 to evaluate the central ranker as we want to explore the performance of FOLtR-ES on other metrics.
 
 \subsection{Baselines}
+To further study how far the FOLtR-ES is left behind with common OLTR methods on ranking quality, we train Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable} models as the baselines.
 
+\subsection{Models and Optimization}
+As we do not want to study the influence of ranking models to the original algorithm, we adopt the same models and optimization steps as~\cite{kharitonov2019federated}. The two ranking models are a linear ranker and a neural network with a single hidden layer of size 10. For optimization, we use Adam~\cite{kingma2014adam} with default parameters.
 
-\subsection{Models}
-
-\subsection{Click Models}
-we simulate uses by applying an instance of Cascade Click Model (CCM)~\cite{}
-
-(further explain about CCM)
-
-(table for CCM we use)
 
