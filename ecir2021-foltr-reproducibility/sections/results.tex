@@ -28,6 +28,7 @@ Unlike MQ2007 and MQ2008 datasets, FOLtR-ES performed on MLSR-WEB10K shows an op
 
 To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across {50, 1000, 2000} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across {0.5, 0.9, 1.0}.
 
+Our experiments show that lower clients number will reduce the performance in the linear ranker. But for the neural ranker, the difference is minor.
 
 \begin{figure}[H]
 	\centering
@@ -54,4 +55,8 @@ For a fair comparation, we set up the privacy probability $p = 1$ (lowest privac
 	\caption{Mean batch MaxRR for MSLR-WEB10K with 2000 clients and $p = 1$}
 	\label{fig: mslr-v0-baseline}
 \end{figure}
+
+\subsection{Extending FOLtR-ES to other quality metric}
+
+
 
