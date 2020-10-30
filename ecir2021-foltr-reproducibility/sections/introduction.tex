@@ -6,16 +6,12 @@ Several methods for OLTR exist that attempt to address the specific challenges o
 An aspect that has not been received wide attention in OLTR is how the privacy of users could be guaranteed. Current OLTR methods in fact assume that a central server collects all queries and interactions of all users of the search system, and it is this central server that is responsible for the indexing of the collection, the training of the ranker and the production of the SERPs. A recent work by Kharitonov, however, has attempted to provide a mechanism for OLTR that preserves the privacy of users~\cite{kharitonov2019federated}. The method relies on the federated learning paradigm~\cite{bibid}, in which data (collection, queries, interactions) is maintained at each client's side along with a copy of the ranker, and updates to the rankers that are learned from the interaction on the client side are shared to the central server, which is responsible for aggregating the update signal from clients and propagate the aggregated ranker update. In this specific case, all users observe and act on the same feature space; each user however retains control of their own data, which includes the collection, the queries and the interactions.  
 
 
+This paper aims to replicate and then reproduce the experiments from the original work of Kharitonov~\cite{kharitonov2019federated}, investigating the effect different configurations of that federated OLTR method have on effectiveness and user experience, extending and generalising its evaluation to different settings commonly used in OLTR and to different collections. Specifically, we address the following research questions:
 
-
-
-The following research questions are addressed in this paper:
-
-RQ1. Does the Federated Online Learning to Rank algorithm also work on other widely used Learning to Rank datasets?
-
-RQ2. Does the number of clients affect the performance of Federated Online Learning to Rank?
-
-RQ3. Can federated online learning to rank achieve similar performance comparing with other state-of-the-art online learning to rank methods?
-
-RQ4. Can Federated Online Learning to Rank generalise to other typical OLTR evaluation setup, such as nDCG or MRR?
+\begin{itemize}
+	\item[RQ1:] \textit{Does the Federated Online Learning to Rank algorithm also work on other widely used Learning to Rank datasets?}
+	\item[RQ2:] \textit{Does the number of clients affect the performance of Federated Online Learning to Rank?}
+	\item[RQ3] \textit{Can federated online learning to rank achieve similar performance comparing with other state-of-the-art online learning to rank methods?}
+	\item[RQ4] \textit{Can Federated Online Learning to Rank generalise to other typical OLTR evaluation setup, such as nDCG or MRR?}
+\end{itemize}
 
