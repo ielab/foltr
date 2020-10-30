@@ -3,7 +3,7 @@
 In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.
 
 \subsection{Datasets}
-The datasets we use are MQ2007 and MQ2008~\cite{DBLP:journals/corr/QinL13}, MLSR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11} datasets, which are commonly-used offline learning to rank datasets. Each dataset contains a centain amount of queries and corresponding candidate documents. The query-document pairs are represented by feature vectors and relevance labels. For MQ2007 and MQ2008 datasets, the relevance labels value as 0 (not relevant), 1 (partially relevant) and 2 (perfecly relevant). The relevance annotations of MLSR-WEB10K range from 0 (not relevant) to 4 (perfectly relevant). Each dataset contains five splits, except for Yahoo! Webscope. More detailed information for each dataset can be found in Table \ref{table:1:dataset}.
+The datasets we use are MQ2007 and MQ2008~\cite{DBLP:journals/corr/QinL13}, MSLR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11} datasets, which are commonly-used offline learning to rank datasets. Each dataset contains a centain amount of queries and corresponding candidate documents. The query-document pairs are represented by feature vectors and relevance labels. For MQ2007 and MQ2008 datasets, the relevance labels value as 0 (not relevant), 1 (partially relevant) and 2 (perfecly relevant). The relevance annotations of MSLR-WEB10K range from 0 (not relevant) to 4 (perfectly relevant). Each dataset contains five splits, except for Yahoo! Webscope. More detailed information for each dataset can be found in Table \ref{table:1:dataset}.
 
 %MQ2007 dataset contains 1692 unique queries and 69623 relevance labels. MQ2008 dataset contains 784 unique queries and 15211 relevance labels. For MQ2007 and MQ2008 dataset, each query-document pair contains 46 features.
 We use the original dataset in training and validating procedure without any preprocessing, such as feature selection or feature normalization.
@@ -22,7 +22,7 @@ We use the original dataset in training and validating procedure without any pre
 		%\hline
 		MQ2008  &  784  &   15211  &    46    \\
 		%\hline
-		MLSR-WEB10K  &   XXX &   XXX  &    136  \\
+		MSLR-WEB10K  &   XXX &   XXX  &    136  \\
 		%\lspbottomrule
 		\hline
 	\end{tabular}
@@ -34,7 +34,7 @@ Because no public datasets with search log is available for online learning to r
 
 We follow the same method with FOLtR-ES for simulation. We sample $B$ queries for each client randomly and use the local perturbed model to rank the documents. The length for each ranking list is limited to 10 documents. After simulating user's clicks data, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranking model. Finally, each client receive the updated ranking model. 
 
-For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability with~\cite{kharitonov2019federated} for MQ2007 and~\cite{oosterhuis2016probabilistic} for MLSR-WEB10K. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  table 2 shows the parameters of three click models.
+For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability with~\cite{kharitonov2019federated} for MQ2007 and~\cite{oosterhuis2016probabilistic} for MSLR-WEB10K. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  table 2 shows the parameters of three click models.
 
 \begin{table}
 	\caption{Three click model instantiations for MQ2007 dataset}
@@ -57,8 +57,8 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 \end{table}
 
 \begin{table}
-	\caption{Three click model instantiations for MLSR-WEB10K dataset}
-	\label{table:3:MLSR-WEB10K}
+	\caption{Three click model instantiations for MSLR-WEB10K dataset}
+	\label{table:3:MSLR-WEB10K}
 	\centering
 	\begin{tabular}{l c c c c c c c c c c}
 		%\lsptoprule

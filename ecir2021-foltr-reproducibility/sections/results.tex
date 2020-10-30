@@ -4,25 +4,44 @@
 
 \subsection{Performance of FOLtR-ES on other dataset}
 
-In the previous work, FOLtR-ES is conducted on MQ2007 and MQ2008 datasets~\cite{kharitonov2019federated}. To further study if the algorithm can achieve similar ranking performance on other publicly available LTR datasets. We perform experiments on MLSR-WEB10K dataset using same parameters chosen by~\cite{kharitonov2019federated}, using antithetic variates and setting $B = 4$ and $p = 0.9$. 
+In the previous work, FOLtR-ES is conducted on MQ2007 and MQ2008 datasets~\cite{kharitonov2019federated}. To further study if the algorithm can achieve similar ranking performance on other publicly available LTR datasets. We perform experiments on MSLR-WEB10K dataset using same parameters chosen by~\cite{kharitonov2019federated}, using antithetic variates and setting $B = 4$. 
 
-Unlike MQ2007 and MQ2008 datasets, FOLtR-ES performed on MLSR-WEB10K shows an opposite finding: the neural ranker dose not consistently perform better that the linear ranker. And for MLSR-WEB10K, FOLtR-ES takes more times on updating the ranker till it achieves the stable performance, which might be caused by larger training queries in MLSR-WEB10K. Figure \ref{fig: mslr-v0} shows the mean batch MaxRR of five data splits in MLSR-WEB10K with the three click models.
+Unlike MQ2007 and MQ2008 datasets, FOLtR-ES performed on MSLR-WEB10K shows an opposite finding: the neural ranker dose not consistently perform better that the linear ranker. And for MSLR-WEB10K, FOLtR-ES takes more times on updating the ranker till it achieves the stable performance, which might be caused by larger training queries in MSLR-WEB10K. Figure \ref{fig: mq2007-rq1-1.0}\ref{fig: mslr-rq1-1.0}\ref{fig: mq2007-rq1-0.5}\ref{fig: mslr-rq1-0.5} show the mean batch MaxRR averaged on five data splits in MQ2007 and MSLR-WEB10K with the three click models.
+
+(Figures lack legend)
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_c2000_p1.0.png}
+	\caption{Mean batch MaxRR for MQ2007 (2000 clients and $p = 0.9$)}
+	\label{fig: mq2007-rq1-1.0}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=3.5cm]{mslr10k_foltr_c2000_p1.0.png}
+	\caption{Mean batch MaxRR for MSLR-WEB10K (2000 clients and $p = 0.9$)}
+	\label{fig: mslr-rq1-1.0}
+\end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=16cm, height=5cm]{v0_mslr_foltr_per_batch.png}
-	\caption{Mean batch MaxRR for MLSR-WEB10K with $p = 0.9$}
-	\label{fig: mslr-v0}
+	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_c2000_p0.5.png}
+	\caption{Mean batch MaxRR for MQ2007 (2000 clients and $p = 0.5$)}
+	\label{fig: mq2007-rq1-0.5}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=3.5cm]{mslr10k_foltr_c2000_p0.5.png}
+	\caption{Mean batch MaxRR for MSLR-WEB10K (2000 clients and $p = 0.5$)}
+	\label{fig: mslr-rq1-0.5}
 \end{figure}
 
-
 \subsection{Effects of number of clients on FOLtR-ES}
-%To answer RQ1, we perform experiments on MLSR-WEB10K dataset with the same FOLtR-ES setup
+%To answer RQ1, we perform experiments on MSLR-WEB10K dataset with the same FOLtR-ES setup
 %Reproducing FOLtR-ES on other datasets
 
-To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across {50, 1000, 2000} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across {0.5, 0.9, 1.0}.
+To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across \{50, 1000, 2000\} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across \{0.5, 0.9, 1.0\}.
 
-Our experiments show that lower clients number will reduce the performance in the linear ranker. But for the neural ranker, the difference is minor.
+Our experiments show that little clients number will reduce the performance in the linear ranker. But for the neural ranker, the difference is minor.
 
 \begin{figure}[H]
 	\centering
@@ -30,11 +49,18 @@ Our experiments show that lower clients number will reduce the performance in th
 	\caption{Mean batch MaxRR for MQ2007 with different client number}
 	\label{fig: mq2007clients}
 \end{figure}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_client_linear_p0.9.png}
+	\caption{Mean batch MaxRR for MQ2007 with different client number (linear ranker and $p = 0.9$)}
+	\label{fig: mq2007-rq2-0.9}
+\end{figure}
 
 \subsection{Comparing FOLtR-ES with OLTR baselines}
 
-For a fair comparation, we set up the privacy probability $p = 1$ (lowest privacy) in FOLtR-ES. We perform experiments on MQ2007 and MLSR-WEB10K datasets with simulating 2000 clients.
+In order to further study the ranking quality, especially users' experience in FOLtR-ES, we perform experiments on comparing FOLtR-ES with the current state-of-the-art OLTR methods. In this section, we choose Pairwise Differentiable Gradient Descent (PDGD) models as baselines. For a fair comparation, we set up the privacy probability $p = 1$ (lowest privacy) in FOLtR-ES. We perform experiments on MQ2007 and MSLR-WEB10K datasets with simulating 2000 clients.
+
+Based on the experiment results, we can see FOLtR-ES still lags behind OLTR methods in terms of the ranking performance. As the ranking quality is an essential metric for web search engines, future work can be extend to improving ranking performance and in the meantime, protecting users' privacy.
 
 \begin{figure}[H]
 	\centering
@@ -50,7 +76,24 @@ For a fair comparation, we set up the privacy probability $p = 1$ (lowest privac
 	\label{fig: mslr-v0-baseline}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_PDGD_mrr_c2000_p1.0.png}
+	\caption{Mean batch MaxRR for MQ2007 with two FOLtR-ES ranker(2000 clients and $p = 1$) and PDGD baselines}
+	\label{fig: mq2007-rq3}
+\end{figure}
+
+
 \subsection{Extending FOLtR-ES to other quality metric}
 
 
+To study the generalisation of FOLtR-ES to other common OLTR evaluation metrics, we use Discounted Cumulative Gain (DCG) to evaluate the users' experience in each interaction. We also compute NDCG@10 with the relevance labels to evaluate the central ranker with test data as we want to explore the stability of  performance in FOLtR-ES.
 
+In terms of nDCG evaluation, although FOLtR-ES achieves decent performance (with nDCG exceed 0.4 except for $Informational$ model), it still falls behind the PDGD baselines.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_PDGD_ndcg_c2000_p1.0.png}
+	\caption{Mean batch MaxRR for MQ2007 with(2000 clients and $p = 1$)}
+	\label{fig: mq2007-rq4}
+\end{figure}
