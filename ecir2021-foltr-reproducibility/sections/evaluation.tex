@@ -63,7 +63,7 @@ For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:co
 \end{table}
 
 \subsection{Evaluation metric}
-For direct comparison with the original FOLTR-ES work, we choose the reciprocal rank of the highest clicked result in each interaction (MaxRR~\cite{radlinski2008learning}). This metric is computed on the clicks produced by the simulated users on the SERPs. 
+For direct comparison with the original FOLTR-ES work, we use the reciprocal rank of the highest clicked result in each interaction (MaxRR~\cite{radlinski2008learning}). This metric is computed on the clicks produced by the simulated users on the SERPs. 
 
 The evaluation setting above is unusual for OLTR. In RQ4, we also consider the more commonly used normalised Discounted Cumulative Gain (nDCG), as FOLTR-ES is designed to allow optimization based on any absolute measures of ranking quality. We thus record the nDCG@10 values from the relevance labels of the SERP displayed to users during interactions. This is referred to as online nDCG and the scores represent users' satisfaction~\cite{DBLP:conf/wsdm/HofmannSWR13}. We also record the nDCG@10 of the final learned ranker measured a heldout test set: this is refer to as offline nDCG.
 
