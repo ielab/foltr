@@ -8,32 +8,37 @@ The FOLtR-ES method consists of three parts. First, it casts the ranking problem
 The federated learning optimization setting consists in turn of several steps, and assumes the presence of a central server and a number of distributed clients. First, a client downloads the most recently updated ranker from the server. Afterwards, the client observes $B$ user interactions (search queries and examination of SERPs) which are served by the client's ranker. The performance metrics of these interactions are averaged by the client and a privatized message is sent to the centralized server. After receiving messages from $N$ clients, the server combines them to estimate a single gradient $g$ and performs an optimization step to update the current ranker. Finally, the clients download the newly updated ranker from the server.
 
 \subsection{Gradient Estimation}
-Assume that the ranking model comes from a parametric family indexed by vector $\theta \in R^{n}$. Each time a user $u$ has an interaction $a$, the ranking quality is denoted as $f$. The goal of optimization is to find model vector $\theta^*$ that can maximize the mean of metric $f$ across all interactions $a$ from all users $u$:
+The method assumes that the ranker comes from a parametric family indexed by vector $\theta \in R^{n}$. Each time a user $u$ has an interaction $a$, the ranking quality is measured; this is denoted as $f$. The goal of optimization is to find the vector $\theta^*$ that can maximize the mean of the metric $f$ across all interactions $a$ from all users $u$:
 \begin{equation}
-	\theta^{*}=\arg \max _{\theta} F(\theta)=\arg \max _{\theta} \mathbb{E}_{u} \mathbb{E}_{a \mid u, \theta} f(a ; \theta, u)
+	\theta^{*}=\arg \max _{\theta} F(\theta)=\arg \max _{\theta} \mathbb{E}_{u} \mathbb{E}_{a \mid u, \theta} f(a ; \theta, u) \label{eq-theta}
 \end{equation}
-By using Evolution Strategies (ES)~\cite{salimans2017evolution}, FOLtR-ES algorithm considers a population of parameter vectors which follow the distribution with a density function $p_{\phi}(\theta)$. The objective turns to finding the distribution parameter $\phi$ that can maximize the expectation of metrics across the population:
+
+Using Evolution Strategies (ES)~\cite{salimans2017evolution}, FOLTR-ES considers a population of parameter vectors which follow the distribution with a density function $p_{\phi}(\theta)$. The objective aims to find the distribution parameter $\phi$ that can maximize the expectation of the metric across the population:
 \begin{equation}
-	 \mathbb{E}_{\theta\sim p_{\phi}(\theta)}~[F(\theta)]
+	 \mathbb{E}_{\theta\sim p_{\phi}(\theta)}~[F(\theta)] \label{eq-expectation}
 \end{equation}
-The gradient $g$ of Equation (2) is obtained in a fashion similar to REINFORCE~\cite{williams1992simple}:
+
+The gradient $g$ of the expectation of the metric across the population (Equation~\ref{eq-expectation}) is obtained in a manner similar to REINFORCE~\cite{williams1992simple}:
 \begin{equation}
 	\begin{aligned}
 		g &=\nabla_{\phi} \mathbb{E}_{\theta}[F(\theta)]=\nabla_{\phi} \int_{\theta} p_{\phi}(\theta) F(\theta) d \theta=\int_{\theta} F(\theta) \nabla_{\phi} p_{\phi}(\theta) d \theta=\\
 		&=\int_{\theta} F(\theta) p_{\phi}(\theta)\left(\nabla_{\phi} \log p_{\phi}(\theta)\right) d \theta=\mathbb{E}_{\theta}\left[F(\theta) \cdot \nabla_{\phi} \log p_{\phi}(\theta)\right]
 	\end{aligned}
 \end{equation}
-Same as Evolution Strategies, FOLtR-ES instantiates population distribution $p_{\phi}(\theta)$ as an isotropic multivariate Gaussian distribution with mean $\phi$ and fixed diagonal covariance matrix $\sigma^2I$. Thus a simple form of gradient estimation is denoted as:
+
+Following the Evolution Strategies method, FOLTR-ES instantiates the population distribution $p_{\phi}(\theta)$ as an isotropic multivariate Gaussian distribution with mean $\phi$ and fixed diagonal covariance matrix $\sigma^2I$. Thus a simple form of gradient estimation is denoted as:
 \begin{equation}
 	g=\mathbb{E}_{\theta \sim p_{\phi}(\theta)}\left[F(\theta) \cdot \frac{1}{\sigma^{2}}(\theta-\phi)\right]
 \end{equation}
-Based on federated optimization scenario, $\theta$ is sampled independently on client side. Combined with the definition of $F(\theta)$ in Equation (1), the gradient can be obtained as:
-\begin{equation}
-	g=\mathbb{E}_{u} \mathbb{E}_{\theta \sim p_{\phi}(\theta)}\left[\left(\mathbb{E}_{a \mid u, \theta} f(a ; \theta, u)\right) \cdot \frac{1}{\sigma^{2}}(\theta-\phi)\right]
-\end{equation}
-To get the estimate $\hat{g}$ of $g$ from Equation (5), $\hat{g} \approx g$, following steps are adopted: (a) each client $u$ randomly generates a pseudo-random seed $s$ and uses the seed to sample a perturbed model $\theta_{s} \sim \mathbb{N}\left(\phi, \sigma^{2} I\right)$, (b) uses the average of metric $f$ over $B$ interactions to estimate the expected loss $\hat{f} \approx \mathbb{E}_{a \mid u, \theta_{s}} f(a;\theta_s, u) $ from Equation (5), (c) communicates the message tuple $(s,\hat{f})$ to the server, (d) the centralized server can get the estimate $\hat{g}$ of Equation (5) according to all message sent from $N$ clients.
 
-To reduce the variance of gradient estimates, means of antithetic variates are used in FOLtR-ES, which is also a ES trick~\cite{salimans2017evolution}. The algorithm in gradient estimation follows standard ES except that the random seeds are sampled in client side.
+Based on the federated learning optimization setting, $\theta$ is sampled independently on the client side. Combined with the definition of $F(\theta)$ in Equation~\ref{eq-theta}, the gradient can be obtained as:
+\begin{equation}
+	g=\mathbb{E}_{u} \mathbb{E}_{\theta \sim p_{\phi}(\theta)}\left[\left(\mathbb{E}_{a \mid u, \theta} f(a ; \theta, u)\right) \cdot \frac{1}{\sigma^{2}}(\theta-\phi)\right] \label{eq-gradient}
+\end{equation}
+
+To obtain the estimate $\hat{g}$ of $g$ from Equation~\ref{eq-gradient}, $\hat{g} \approx g$, the following steps are followed: (i) each client $u$ randomly generates a pseudo-random seed $s$ and uses the seed to sample a perturbed model $\theta_{s} \sim \mathbb{N}\left(\phi, \sigma^{2} I\right)$, (ii) the average of metric $f$ over $B$ interactions is used to estimate the expected loss $\hat{f} \approx \mathbb{E}_{a \mid u, \theta_{s}} f(a;\theta_s, u) $ from Equation~\ref{eq-gradient}, (iii) each client communicates the message tuple $(s,\hat{f})$ to the server, (iv) the centralized server computes the estimate $\hat{g}$ of Equation~\ref{eq-gradient} according to all message sent from the $N$ clients.
+
+To reduce the variance of the gradient estimates, means of antithetic variates are used in FOLTR-ES: this is a common ES trick~\cite{salimans2017evolution}. The algorithm of the gradient estimation follows the standard ES practice, except that the random seeds are sampled at the client side.
 
 \subsection{Privatization Procedure}
 To ensure that the clients' privacy is fully protected, FOLtR-ES proposes a privatization procedure that introduces privatization noise in the communication procedure  between clients and the server.
