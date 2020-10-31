@@ -5,7 +5,7 @@ In this paper we considered the federated online learning to rank with evolution
 We set to explore four research questions related to FOLTR-ES. RQ1 aimed to investigate the generalisability of the original results obtained by FOLTR-ES on the MQ2007/2008 dataset to other datasets used in current OLTR practice. Our  experiments on MQ2007/2008 show consistent findings with that of Kharitonov~\cite{kharitonov2019federated}. However, when larger LTR datasets are considered, results change. In particular, the neural ranker used in FOLTR-ES is less effective than the linear ranker, especially on MSLR-WEB10K. %which shows FOLtR-ES needs more data to achieve effective training on those datasets with larger number of features.
 
 RQ2 aimed to investigate the effect varying the number of clients involved in FOLTR-ES has on the effectiveness of the method. %We set the total times of interaction to a fix number and discover the ranking quality in terms of different number of clients in online simulation. 
-Our experiments show mixed results with respect to the number of clients: the effect varies depending on dataset, ranker type and click settings. 
+Our experiments show mixed results with respect to the number of clients: the effect largely varies depending on dataset, ranker type and click settings. 
 %that little clients number harm the performance in the linear ranker. But for the neural ranker, the difference is minor.
 
 RQ3 aimed to compare FOLRT-ES with current OLTR state-of-the-art methods to understand the gap required to be paid for maintaining privacy. Our experiments show that FOLTR-ES lags behind the current OLTR state-of-the-art in terms of ranking performance: differences become more substantial when noisy clicks or larger datasets are considered. 
