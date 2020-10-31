@@ -3,16 +3,12 @@
 In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.
 
 \subsection{Datasets}
-The original paper conducted experiments on MQ2007 and MQ2008 learning to rank dataset~\cite{DBLP:journals/corr/QinL13} which arguably small and outdated
-
-The datasets we use are MQ2007~\cite{DBLP:journals/corr/QinL13}, MSLR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11} datasets, which are commonly-used offline learning to rank datasets. Each dataset contains a centain amount of queries and corresponding candidate documents.
-
-The query-document pairs are represented by feature vectors and relevance labels. For MQ2007 datasets, the relevance labels value as 0 (not relevant), 1 (partially relevant) and 2 (perfecly relevant). The relevance annotations of MSLR-WEB10K range from 0 (not relevant) to 4 (perfectly relevant). Each dataset contains five splits, except for Yahoo! Webscope. 
-
+The original paper conducted experiments on MQ2007 and MQ2008 learning to rank dataset~\cite{DBLP:journals/corr/QinL13} which arguably small and outdated. In this paper, we instead use more recent and lager dataset: MSLR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11}, which are commonly-used in offline learning to rank and online learning to rank~\cite{zhuang2020counterfactual,DBLP:conf/wsdm/HofmannSWR13,jagerman2019model,oosterhuis2018differentiable}. Compare to MQ2007 and 2008, both MSLR-WEB10K and Yahoo! are using 5-level graded relevance judgements range from 0 (not relevant) to 4 (perfectly relevant).
+Each dataset contains a centain much more number of queries and corresponding candidate documents: MSLR-WEB10K has 10,000 queries with each query having 125 assessed documents on average, and Yahoo has 29,921 queries with 709,877 documents. In addition, both datasets have much rich of features.  MSLR-WEB10K has 136 features and Yahoo has 700. We also repeat exemptions on MQ2007 for reproducing the experiments from the original work.
 %More detailed information for each dataset can be found in Table \ref{table:1:dataset}.
 
 %MQ2007 dataset contains 1692 unique queries and 69623 relevance labels. MQ2008 dataset contains 784 unique queries and 15211 relevance labels. For MQ2007 and MQ2008 dataset, each query-document pair contains 46 features.
-We use the original dataset in training and validating procedure without any preprocessing, such as feature selection or feature normalization.
+
 
 %\begin{table}
 %	\caption{Information for each dataset}
@@ -40,73 +36,15 @@ Because no public datasets with search log is available for online learning to r
 
 We follow the same method with FOLtR-ES for simulation. We sample $B$ queries for each client randomly and use the local perturbed model to rank the documents. The length for each ranking list is limited to 10 documents. After simulating user's clicks data, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranking model. Finally, each client receive the updated ranking model. 
 
-For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability with~\cite{kharitonov2019federated} for MQ2007 and~\cite{oosterhuis2016probabilistic} for MSLR-WEB10K. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  Table \ref{table:1:cm-mq2007} show the parameters of three click models.
-
-\begin{table}
-	\caption{Three click model instantiations for MQ2007 dataset}
-	\label{table:1:cm-mq2007}
-	\centering
-	\begin{tabular}{l c c c c c c}
-		%\lsptoprule
-		\hline
-		&&$P(click = 1 | r)$ &&& $P(stop = 1 | r)$  & \\
-		& r = 0&  r = 1  & r = 2 & r = 0&  r = 1  & r = 2\\
-		\midrule
-		perfect  &   0.0  &    0.5  &    1.0 & 0.0 & 0.0 & 0.0   \\
-		%\hline
-		navigational  &  0.05  &   0.5  &    0.95  & 0.2 & 0.5 & 0.9  \\
-		%\hline
-		informational  &   0.4 &   0.7  &    0.9 & 0.1 & 0.3 & 0.5 \\
-		%\lspbottomrule
-		\hline
-	\end{tabular}
-\end{table}
-
-\begin{table}
-	\caption{Three click model instantiations for MSLR-WEB10K dataset}
-	\label{table-cm-MSLR-WEB10K}
-	\centering
-	\begin{tabular}{l c c c c c c c c c c}
-		%\lsptoprule
-		\hline
-		&&&$P(click = 1 | r)$ &&&&& $P(stop = 1 | r)$  && \\
-		& r = 0&  r = 1  & r = 2 & r = 3 & r = 4 & r = 0&  r = 1  & r = 2 & r = 3 & r = 4\\
-		\midrule
-		perfect  &   0.0  &    0.2  &   0.4  & 0.8 & 1.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
-		%\hline
-		navigational  &  0.05  &   0.3  &    0.5  & 0.7 & 0.95 & 0.2  & 0.3  & 0.5  & 0.7 & 0.9  \\
-		%\hline
-		informational  &   0.4 &   0.6  &   0.7 & 0.8 & 0.9  & 0.1  & 0.2 & 0.3 & 0.4 & 0.5 \\
-		%\lspbottomrule
-		\hline
-	\end{tabular}
-\end{table}
+For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability for MSLR-WEB10K and Yahoo!. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  Table \ref{mslr-CCM} show the parameters of three click models. For clicks simulation with MQ2007, we use the same parameter settings from the table 1 in original paper.
 
 
 \newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
 \setlength{\tabcolsep}{3mm}
-\begin{table}[t!]
-	\centering
-	\caption[centre]{Three click model instantiations for MQ2007 dataset}\label{mq2007-CCM}
-	\begin{tabularx}{\textwidth}{XXXXXXXXXXX}
-		\toprule
-		& \multicolumn{5}{c}{$p(click=1|R)$} & \multicolumn{5}{c}{$p(stop=1|R)$} \\
-		\cmidrule(r){2-6}  \cmidrule(){7-11}
-		R & \tc{0}& \tc{1} &\tc{2} & \tc{3}& \tc{4}&  \tc{0} & \tc{1} & \tc{2} & \tc{3} & \tc{4} \\
-		\midrule
-		$perfect$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
-		$navigational$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
-		$informational$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
-		\bottomrule
-	\end{tabularx}
-	\vspace{-10pt}
-\end{table}
 
-%\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
-\setlength{\tabcolsep}{3mm}
 \begin{table}[t!]
 	\centering
-	\caption[centre]{Three click model instantiations for MSLR-WEB10K dataset}\label{mslr-CCM}
+	\caption[centre]{Three click model instantiations for MSLR-WEB10K and Yahoo! dataset}\label{mslr-CCM}
 	\begin{tabularx}{\textwidth}{XXXXXXXXXXX}
 		\toprule
 		& \multicolumn{5}{c}{$p(click=1|R)$} & \multicolumn{5}{c}{$p(stop=1|R)$} \\
@@ -114,8 +52,8 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 		R & \tc{0}& \tc{1} &\tc{2} & \tc{3}& \tc{4}&  \tc{0} & \tc{1} & \tc{2} & \tc{3} & \tc{4} \\
 		\midrule
 		$perfect$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
-		$navigational$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
-		$informational$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
+		$nav$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
+		$infor$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
 		\bottomrule
 	\end{tabularx}
 	\vspace{-10pt}
