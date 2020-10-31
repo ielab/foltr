@@ -54,20 +54,15 @@
 \maketitle
 
 \begin{abstract}
-Online Learning to Rank (OLTR) optimizes ranking models using users' online feedback directly, which has the advantages of high-efficiency and lower cost. The largely existing methods focus on improving the effectiveness and users' experience, more specifically the ranking quality in OLTR. Fewer attention has been paid to protecting users' privacy in the condition of guaranteeing the ranking qualify. 
+Online Learning to Rank (OLTR) optimizes ranking models using users' online feedback directly, which has the advantages of high-efficiency and lower cost. The largely existing methods focus on improving the effectiveness and users' experience, more specifically the ranking quality in OLTR. Fewer attention has been paid to protecting users' privacy in the condition of guaranteeing the ranking qualify.
+
+A recent work by Kharitonov~\cite{kharitonov2019federated} proposes a learning algorithm called FOLtR-ES that conducts Federated Machine Learning paradigm into OLTR in order to provide a solution in user privacy guarantees. This work develops a privatization procedure to guarantee $\epsilon$-local differential privacy.
+
+Our experiments study the reproducibility of FOLtR-ES using MSLR-WEB10K and Yahoo! Webscope datasets. For a better study in performance of FOLtR-ES comparing to other widely-used OLTR methods, we train Pairwise Differentiable Gradient Descent (PDGD) models as baselines. We also extend the online optimization metric to Discounted Cumulative Gain and use nDCG as evaluation metric to study the consistency of ranking performance in FOLtR-ES. Our experiments show FOLtR-ES can generalise on larger datasets and other common online metric. Although FOLtR-ES preserves users' privacy to some degree, it lags behind the OLTR baseline in terms of ranking performance. 
+
 	\keywords{Online Learning to Rank; Federated Machine Learning}
 \end{abstract}
 
-%\subsection{Online Learning to Rank}
-%Main challenges in online learning to rank problem are: (a) noise and biases of user interactions, (b) non-continuous metrics for optimization.
-%
-%OLTR updates the ranker through user's online feedback, more specifically, user's click data. Unlike traditional LTR methods, OLTR doesn't need human-annotated data, which is expensive and time-consuming to create. Besides, human-annotated data can not always represent true preference of users. Traditional LTR methods are more suitable in situation where one ranking list fits all users. In a continuously developing world, people's preference and answers to one search query may change or differ from other's. OLTR provides a better way to learning from users' feedback in order to improve users' experience and ranking effectiveness.
-
-%\subsection{Federated Machine Learning}
-%
-%Federated Machine Learning aims to solve two main challenges existing in today's artificial intelligence research: (a) data existing in the form of isolated islands, (b) the growing concern for data privacy and security~\cite{yang2019federated}. 
-%
-%The concept of Federated Learning was first proposed by Google in 2016~\cite{DBLP:journals/corr/KonecnyMRR16,DBLP:journals/corr/KonecnyMYRSB16}. The first Federated Learning algorithm is Federated Averaging~\cite{mcmahan2016federated}. In early year's research, the Federated Learning aims to train Machine Learning models using data from multiple data source while preventing data leakage. 
 
 \input{sections/introduction.tex}
 \input{sections/method.tex}
