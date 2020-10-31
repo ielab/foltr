@@ -1,6 +1,6 @@
 \section{Experimental Settings}
 
-In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.
+In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.\footnote{The code for reproducing the experiments in this paper are available at~\url{https://github.com/Karlywang/foltr-reproduce}} 
 
 \subsection{Datasets}
 The original paper conducted experiments on MQ2007 and MQ2008 learning to rank dataset~\cite{DBLP:journals/corr/QinL13} which arguably small and outdated. In this paper, we instead use more recent and lager dataset: MSLR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11}, which are commonly-used in offline learning to rank and online learning to rank~\cite{zhuang2020counterfactual,DBLP:conf/wsdm/HofmannSWR13,jagerman2019model,oosterhuis2018differentiable}. Compare to MQ2007 and 2008, both MSLR-WEB10K and Yahoo! are using 5-level graded relevance judgements range from 0 (not relevant) to 4 (perfectly relevant).
@@ -36,7 +36,7 @@ Because no public datasets with search log is available for online learning to r
 
 We follow the same method with FOLtR-ES for simulation. We sample $B$ queries for each client randomly and use the local perturbed model to rank the documents. The length for each ranking list is limited to 10 documents. After simulating user's clicks data, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranking model. Finally, each client receive the updated ranking model. 
 
-For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability for MSLR-WEB10K and Yahoo!. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  Table \ref{mslr-CCM} show the parameters of three click models. For clicks simulation with MQ2007, we use the same parameter settings from the table 1 in original paper.
+For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability for MSLR-WEB10K and Yahoo!. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  Table \ref{mslr-CCM} show the parameters of three click models, $Perfect$, $Navigational$, and $Informational$. For clicks simulation with MQ2007, we use the same parameter settings from the Table 1 in the original paper.
 
 
 \newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
@@ -51,9 +51,9 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 		\cmidrule(r){2-6}  \cmidrule(){7-11}
 		R & \tc{0}& \tc{1} &\tc{2} & \tc{3}& \tc{4}&  \tc{0} & \tc{1} & \tc{2} & \tc{3} & \tc{4} \\
 		\midrule
-		$perfect$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		$perf$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
 		$nav$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
-		$infor$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
+		$inf$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
 		\bottomrule
 	\end{tabularx}
 	\vspace{-10pt}
