@@ -21,7 +21,7 @@ For answering RQ1 we replicate the results obtained by Kharitonov~\cite{khariton
 		\caption{Mean batch MaxRR for Yahoo.}
 		\label{fig:yahoo-rq1}
 	\end{subfigure}
-	\caption{Results for RQ1: performance of FOLTR across datasets.}
+	\caption{Results for RQ1: performance of FOLTR-ES across datasets.}
 \end{figure}
 
 Figure~\ref{fig:mq2007-rq1} reports the results obtained by FOLTR-ES on the MQ 2007 dataset\footnote{Similar results were obtained for MQ 2008 and are omitted for space reasons.} with respect to the three click models considered, various settings for the privacy preservation parameter $p$, and the two FOLTR-ES methods (linear and neural). Our results fully replicate those of Kharitonov~\cite{kharitonov2019federated} and indicate the following findings: (1) FOLTR-ES allows for the iterative learning of effective rankers; (2) high values of $p$ (lesser privacy) provide higher effectiveness; 
@@ -89,11 +89,30 @@ The results of these experiments are reported in Figure~\ref{label}. Our experim
 %	\label{fig: mq2007-rq2-0.9}
 %\end{figure}
 
-\subsection{RQ3: Comparing FOLtR-ES with OLTR baselines}
+\subsection{RQ3: Comparing FOLTR-ES to state-of-the-art OLTR methods}
+The original study of FOLTR-ES did not compared the method with non-federated OLTR approaches. To contextualise the performance of FOLTR-ES and to understand the trade-off between privacy and performance done when designing FOLTR-ES, we compare this method with the current state-of-the-art OLTR method, the Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable}. For fair comparison, we set the privatization parameter $p=1$ (lowest privacy) and the number of clients to 2,000. In addition note that in normal OLTR settings, rankers are updated after each user interaction: however in FOLTR-ES, rankers are updated in small batches. For fair comparison, we adapt PDGD to be updated in batch too. Instead of updating the ranker after each interaction (batch size 1), we accumulate gradients computed on the same batch size as for FOLTR-ES. Specifically, with 2000 clients for FOLTR-ES, the batch size of each update is 8,000 iterations (4 x 2,000). We then compute the updated gradients for PDGD on 8,000 interactiond too. %Note, the number of updates after 2m user interaction now becomes 2m/8000 = 250.
+We perform these experiments on all three datasets considered in this paper, but we omit to report results for Yahoo due to space limitations. 
 
-In order to further study the ranking quality, especially users' experience in FOLtR-ES, we perform experiments on comparing FOLtR-ES with the current state-of-the-art OLTR methods. In this section, we choose Pairwise Differentiable Gradient Descent (PDGD) models as baselines. For a fair comparation, we set up the privacy probability $p = 1$ (lowest privacy) in FOLtR-ES. We perform experiments on MQ2007 and MSLR-WEB10K datasets with simulating 2000 clients.
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mq2007_foltr_PDGD_mrr_c2000_p1.0}
+		\caption{Mean batch MaxRR for MQ2007.}
+		\label{fig:mq2007-rq3}
+	\end{subfigure}
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mslr10k_foltr_PDGD_mrr_c2000_p1.0.png}
+		\caption{Mean batch MaxRR for MSLR10k}
+		\label{fig:mslr10k-rq3}
+	\end{subfigure}
+	\caption{Results for RQ3: performance of FOLTR-ES and PDGD across datasets. \label{fig:RQ3}} 
+\end{figure}
 
-Based on the experiment results, we can see FOLtR-ES still lags behind OLTR methods in terms of the ranking performance. As the ranking quality is an essential metric for web search engines, future work can be extend to improving ranking performance and in the meantime, protecting users' privacy.
+Results are shown in Figure~\ref{fig:RQ3}: regardless of linear or neural ranker, FOLTR-ES is less effective than PDGD. The gap in performance is greater in larger datasets like MSLR10k and Yahoo (not shown) than in the smaller MQ2007/2008. This gap becomes even bigger, especially for the first iterations, if the PDGD ranker was updated after each iteration (not shown here), rather than after a batch has been completed. This highlights that FOLTR-ES has the merit of being the first privacy preserving federated OLTR approach available; however, more work is needed to improve the performance of FOLTR based methods so as to close the gap between privacy-oriented approaches and centralise approaches that do not consider user privacy.
+
+%In order to further study the ranking quality, especially users' experience in FOLtR-ES, we perform experiments on comparing FOLtR-ES with the current state-of-the-art OLTR methods. In this section, we choose Pairwise Differentiable Gradient Descent (PDGD) models as baselines. For a fair comparation, we set up the privacy probability $p = 1$ (lowest privacy) in FOLtR-ES. We perform experiments on MQ2007 and MSLR-WEB10K datasets with simulating 2000 clients.
+
+%Based on the experiment results, we can see FOLtR-ES still lags behind OLTR methods in terms of the ranking performance. As the ranking quality is an essential metric for web search engines, future work can be extend to improving ranking performance and in the meantime, protecting users' privacy.
 
 %\begin{figure}[H]
 %	\centering
