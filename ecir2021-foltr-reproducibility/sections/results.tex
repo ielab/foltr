@@ -85,7 +85,7 @@ For answering RQ2 we vary thee number of clients involved in FOLTR-ES; we invest
 	\caption{Results for RQ2: performance of FOLTR-ES with respect to number of clients. \label{fig:RQ2}} 
 \end{figure}
 
-
+in 
 The results of these experiments are reported in Figure~\ref{fig:RQ2}, and they are mixed. For MQ2007, the number of clients have little effect on the neural ranker used in FOLTR-ES, although when informational clicks are provided this ranker is less stable, although often more effective, if very few clients (50) are used. Having just 50 clients, instead, severally hits the performance of the linear ranker, when compared with 1,000 or 2,000 clients. The findings on MSLR10k, however, are different. In this dataset, a smaller number of clients (50), is generally better than larger numbers, both for linear and neural ranker. An exception to this is when considering navigational clicks: in this case the linear ranker obtains by far thee best performance with a small number of clients, but the neural ranker obtains the worst performance. This suggest that the number of clients greatly affects FOLTR-ES: but trends are not consistent across click types and datasets. 
 
 
@@ -153,7 +153,7 @@ Results are shown in Figure~\ref{fig:RQ3}: regardless of linear or neural ranker
 %\end{figure}
 
 
-\subsection{RQ4: Extending FOLtR-ES to other quality metric}
+\subsection{RQ4: Extending FOLTR-ES evaluation to common OLTR practice}
 
 
 To study the generalisation of FOLtR-ES to other common OLTR evaluation metrics, we use Discounted Cumulative Gain (DCG) to evaluate the users' experience in each interaction. We also compute NDCG@10 with the relevance labels to evaluate the central ranker with test data as we want to explore the stability of  performance in FOLtR-ES.
