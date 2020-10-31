@@ -1,9 +1,8 @@
 
-\section{Methodology}\label{sec:method}
+\section{Federated OLTR with Evolution Strategies}\label{sec:method}
 
-In this section, we provide a brief overview of the FOLtR-ES algorithm. In this work, Online Learning to Rank problem is extended to Federated Learning setup using Evolution Strategies optimization, which is widely used in Reinforcement Learning algorithm.
-
-The FOLtR-ES algorithm contains three parts. First, it follows federated learning optimization scenario. Second, it uses Evolution Strategies to estimate gradients. Finally, it introduces a privatization procedure to protect users' privacy.
+We provide a brief overview of the FOLtR-ES method, which extends online LTR to federated learning; this is done by exploiting evolution strategies optimization, a widely used paradigm in Reinforcement Learning. 
+The FOLtR-ES method consists of three parts. First, it casts the ranking problem into the federated learning optimization setting. Second, it uses evolution strategies to estimate gradients of the rankers. Finally, it introduces a privatization procedure to further protect users' privacy.
 
 \subsection{ Optimization Scenario}
 The optimization scenario can be illustrated as several steps. First, the client downloads the most recently updated ranking model from the server. After $B$ interactions is performed by the client, the performance metrics of the these interactions are averaged in the client side and a privatized message is sent to the centralized server. After receiving messages from $N$ clients, the server combines them to estimate a single gradient g and performs an optimization step to update the current ranking model. Finally, the clients download the newly updated model from the server.
