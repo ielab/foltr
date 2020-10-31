@@ -35,12 +35,11 @@ Each dataset contains many more queries and corresponding candidate documents th
 %\end{table}
 
 \subsection{Simulation}
+It is common practice in OLTR to use LTR datasets and simulate user interactions~\cite{DBLP:conf/wsdm/SchuthOWR16, DBLP:conf/wsdm/HofmannSWR13}. This is because no public dataset with LTR features and clicks is available; in addition OLTR methods directly manipulate the rankings that have to be shown to users, so even if a public dataset with LTR features and clicks was to be available, this could not be used for OLTR. Thus, we simulate users and their reaction with the search results using labelled offline learning to rank datasets, akin to previous work~\cite{DBLP:conf/wsdm/SchuthOWR16, DBLP:conf/wsdm/HofmannSWR13}.
 
-Because no public datasets with search log is available for online learning to rank, we adopt the similar setup with~\cite{DBLP:conf/wsdm/SchuthOWR16, DBLP:conf/wsdm/HofmannSWR13} - simulating users and their reaction to the search results using labelled offline learning to rank datasets.
+For thee experiment, we follow the same method used by the original FOLTR-ES work. We sample $B$ queries for each client randomly and use the local perturbed model to rank documents. The length for each ranking list is limited to 10 documents. After simulating users clicks, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranker. Finally, each client receives the updated ranker. 
 
-We follow the same method with FOLtR-ES for simulation. We sample $B$ queries for each client randomly and use the local perturbed model to rank the documents. The length for each ranking list is limited to 10 documents. After simulating user's clicks data, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranking model. Finally, each client receive the updated ranking model. 
-
-For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability for MSLR-WEB10K and Yahoo!. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  Table \ref{mslr-CCM} show the parameters of three click models, $Perfect$, $Navigational$, and $Informational$. For clicks simulation with MQ2007, we use the same parameter settings from the Table 1 in the original paper.
+For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}, as in the original FOLTR-ES work. We run instances of CCM using the same click probabilities and stop probabilities for MSLR-WEB10K and Yahoo!. Under CCM, the users are assumed to examine a SERP from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on the relevance label $r$. After a click occurs, the user stops with stop probability $P(stop = 1 | r)$, or continues otherwise. It is common practice in OLTR too consider three instantiations of the CCM: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with thhe noisiest feedback among three instantiations.  Table~\ref{mslr-CCM} summarises the parameters of three click models. For simulating clicks for the MQ2007/2008, we use the same parameter settings from Table 1 in the original FOLTR-ES paper: these partially different from those used for MSLR-WEB10K and Yahoo! because relevance labels in these datasets are graded, while they are binary in MQ2007/2008.
 
 
 \newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
@@ -48,7 +47,7 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 
 \begin{table}[t!]
 	\centering
-	\caption[centre]{Three click model instantiations for MSLR-WEB10K and Yahoo! dataset}\label{mslr-CCM}
+	\caption[centre]{The three click model instantiations used for the MSLR-WEB10K and Yahoo! datasets.}\label{mslr-CCM}
 	\begin{tabularx}{\textwidth}{XXXXXXXXXXX}
 		\toprule
 		& \multicolumn{5}{c}{$p(click=1|R)$} & \multicolumn{5}{c}{$p(stop=1|R)$} \\
