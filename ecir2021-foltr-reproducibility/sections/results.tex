@@ -21,7 +21,7 @@ For answering RQ1 we replicate the results obtained by Kharitonov~\cite{khariton
 		\caption{Mean batch MaxRR for Yahoo.}
 		\label{fig:yahoo-rq1}
 	\end{subfigure}
-	\caption{Results for RQ1: performance of FOLTR across datasets.}
+	\caption{Results for RQ1: performance of FOLTR-ES across datasets.}
 \end{figure}
 
 Figure~\ref{fig:mq2007-rq1} reports the results obtained by FOLTR-ES on the MQ 2007 dataset\footnote{Similar results were obtained for MQ 2008 and are omitted for space reasons.} with respect to the three click models considered, various settings for the privacy preservation parameter $p$, and the two FOLTR-ES methods (linear and neural). Our results fully replicate those of Kharitonov~\cite{kharitonov2019federated} and indicate the following findings: (1) FOLTR-ES allows for the iterative learning of effective rankers; (2) high values of $p$ (lesser privacy) provide higher effectiveness; 
@@ -69,7 +69,24 @@ However, not all these findings are applicable to the results obtained when cons
 
 For answering RQ2 we vary thee number of clients involved in FOLTR-ES; we investigate the values \{50, 1,000, 2,000\}. Kharitonov~\cite{kharitonov2019federated} used 2,000 in the original experiments, and the impact of the number . To be able to fairly compare results across number of clients, we fixed the total number of ranker updates to 2,000,000; we also set $B = 4$ and vary the privatization parameter $p$ in \{0.5, 0.9, 1.0\}. We perform these experiments on all three datasets considered in this paper, but we omit to report results for Yahoo due to space limitations. 
 
-The results of these experiments are reported in Figure~\ref{label}. Our experiments show that little clients number will reduce the performance in the linear ranker. But for the neural ranker, the difference is minor.
+
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ2/mq2007_foltr_client_both_p0.9.png}
+		\caption{Mean batch MaxRR for MQ2007.}
+		\label{fig:mq2007-rq2}
+	\end{subfigure}
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ2/mslr10k_foltr_client_both_p0.9.png}
+		\caption{Mean batch MaxRR for MSLR10k}
+		\label{fig:mslr10k-rq2}
+	\end{subfigure}
+	\caption{Results for RQ2: performance of FOLTR-ES with respect to number of clients. \label{fig:RQ2}} 
+\end{figure}
+
+
+The results of these experiments are reported in Figure~\ref{fig:RQ2}, and they are mixed. For MQ2007, the number of clients have little effect on the neural ranker used in FOLTR-ES, although when informational clicks are provided this ranker is less stable, although often more effective, if very few clients (50) are used. Having just 50 clients, instead, severally hits the performance of the linear ranker, when compared with 1,000 or 2,000 clients. The findings on MSLR10k, however, are different. In this dataset, a smaller number of clients (50), is generally better than larger numbers, both for linear and neural ranker. An exception to this is when considering navigational clicks: in this case the linear ranker obtains by far thee best performance with a small number of clients, but the neural ranker obtains the worst performance. This suggest that the number of clients greatly affects FOLTR-ES: but trends are not consistent across click types and datasets. 
 
 
 %To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across \{50, 1000, 2000\} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across \{0.5, 0.9, 1.0\}.
@@ -89,11 +106,30 @@ The results of these experiments are reported in Figure~\ref{label}. Our experim
 %	\label{fig: mq2007-rq2-0.9}
 %\end{figure}
 
-\subsection{RQ3: Comparing FOLtR-ES with OLTR baselines}
+\subsection{RQ3: Comparing FOLTR-ES to state-of-the-art OLTR methods}
+The original study of FOLTR-ES did not compared the method with non-federated OLTR approaches. To contextualise the performance of FOLTR-ES and to understand the trade-off between privacy and performance done when designing FOLTR-ES, we compare this method with the current state-of-the-art OLTR method, the Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable}. For fair comparison, we set the privatization parameter $p=1$ (lowest privacy) and the number of clients to 2,000. In addition note that in normal OLTR settings, rankers are updated after each user interaction: however in FOLTR-ES, rankers are updated in small batches. For fair comparison, we adapt PDGD to be updated in batch too. Instead of updating the ranker after each interaction (batch size 1), we accumulate gradients computed on the same batch size as for FOLTR-ES. Specifically, with 2000 clients for FOLTR-ES, the batch size of each update is 8,000 iterations (4 x 2,000). We then compute the updated gradients for PDGD on 8,000 interactiond too. %Note, the number of updates after 2m user interaction now becomes 2m/8000 = 250.
+We perform these experiments on all three datasets considered in this paper, but we omit to report results for Yahoo due to space limitations. 
 
-In order to further study the ranking quality, especially users' experience in FOLtR-ES, we perform experiments on comparing FOLtR-ES with the current state-of-the-art OLTR methods. In this section, we choose Pairwise Differentiable Gradient Descent (PDGD) models as baselines. For a fair comparation, we set up the privacy probability $p = 1$ (lowest privacy) in FOLtR-ES. We perform experiments on MQ2007 and MSLR-WEB10K datasets with simulating 2000 clients.
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mq2007_foltr_PDGD_mrr_c2000_p1.0}
+		\caption{Mean batch MaxRR for MQ2007.}
+		\label{fig:mq2007-rq3}
+	\end{subfigure}
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mslr10k_foltr_PDGD_mrr_c2000_p1.0.png}
+		\caption{Mean batch MaxRR for MSLR10k}
+		\label{fig:mslr10k-rq3}
+	\end{subfigure}
+	\caption{Results for RQ3: performance of FOLTR-ES and PDGD across datasets. \label{fig:RQ3}} 
+\end{figure}
 
-Based on the experiment results, we can see FOLtR-ES still lags behind OLTR methods in terms of the ranking performance. As the ranking quality is an essential metric for web search engines, future work can be extend to improving ranking performance and in the meantime, protecting users' privacy.
+Results are shown in Figure~\ref{fig:RQ3}: regardless of linear or neural ranker, FOLTR-ES is less effective than PDGD. The gap in performance is greater in larger datasets like MSLR10k and Yahoo (not shown) than in the smaller MQ2007/2008. This gap becomes even bigger, especially for the first iterations, if the PDGD ranker was updated after each iteration (not shown here), rather than after a batch has been completed. This highlights that FOLTR-ES has the merit of being the first privacy preserving federated OLTR approach available; however, more work is needed to improve the performance of FOLTR based methods so as to close the gap between privacy-oriented approaches and centralise approaches that do not consider user privacy.
+
+%In order to further study the ranking quality, especially users' experience in FOLtR-ES, we perform experiments on comparing FOLtR-ES with the current state-of-the-art OLTR methods. In this section, we choose Pairwise Differentiable Gradient Descent (PDGD) models as baselines. For a fair comparation, we set up the privacy probability $p = 1$ (lowest privacy) in FOLtR-ES. We perform experiments on MQ2007 and MSLR-WEB10K datasets with simulating 2000 clients.
+
+%Based on the experiment results, we can see FOLtR-ES still lags behind OLTR methods in terms of the ranking performance. As the ranking quality is an essential metric for web search engines, future work can be extend to improving ranking performance and in the meantime, protecting users' privacy.
 
 %\begin{figure}[H]
 %	\centering
