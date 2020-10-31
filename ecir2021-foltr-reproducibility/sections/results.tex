@@ -1,7 +1,7 @@
 \section{Results and Analysis}
 
 
-\subsection{Generalisation of FOLTR-ES performance beyond MQ2007/2008}
+\subsection{RQ1: Generalisation of FOLTR-ES performance beyond MQ2007/2008}
 For answering RQ1 we replicate the results obtained by Kharitonov~\cite{kharitonov2019federated} on the MQ2007 and MQ2008 datasets; we then reproduce the experiment on MSLR-WEB10K and Yahoo datasets, on which FOLTR-ES has not been yet investigated, and we compare the findings across datasets. For these experiments we use antithetic variates, set $B = 4$, use MaxRR as reward signal and for evaluation on clicked items. 
 
 Figure~\ref{label} reports the results obtained by FOLTR-ES on the MQ 2007 dataset\footnote{Similar results were obtained for MQ 2008 and are omitted for space reasons.} with respect to the three click models considered, various settings for the privacy preservation parameter $p$, and the two FOLTR-ES methods (linear and neural). Our results fully replicate those of Kharitonov~\cite{kharitonov2019federated} and indicate the following findings: (1) FOLTR-ES allows for the iterative learning of effective rankers; (2) high values of $p$ (lesser privacy) provide higher effectiveness; 
@@ -41,26 +41,29 @@ However, not all these findings are applicable to the results obtained when cons
 %	\label{fig: mslr-rq1-0.5}
 %\end{figure}
 
-\subsection{Effects of number of clients on FOLtR-ES}
+\subsection{RQ2: Effect of number of clients on FOLTR-ES}
 %To answer RQ1, we perform experiments on MSLR-WEB10K dataset with the same FOLtR-ES setup
 %Reproducing FOLtR-ES on other datasets
 
-To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across \{50, 1000, 2000\} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across \{0.5, 0.9, 1.0\}.
+For answering RQ2 we vary thee number of clients involved in FOLTR-ES; we investigate the values \{50, 1,000, 2,000\}. Kharitonov~\cite{kharitonov2019federated} used 2,000 in the original experiments, and the impact of the number . To be able to fairly compare results across number of clients, we fixed the total number of ranker updates to 2,000,000; we also set $B = 4$ and vary the privatization parameter $p$ in \{0.5, 0.9, 1.0\}. We perform these experiments on all three datasets considered in this paper, but we omit to report results for yahoo due to space limitations. 
+
+
+%To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across \{50, 1000, 2000\} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across \{0.5, 0.9, 1.0\}.
 
 Our experiments show that little clients number will reduce the performance in the linear ranker. But for the neural ranker, the difference is minor.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=16cm, height=8cm]{v0_mq2007_foltr_clients_p09.png}
-	\caption{Mean batch MaxRR for MQ2007 with different client number}
-	\label{fig: mq2007clients}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_client_linear_p09.png}
-	\caption{Mean batch MaxRR for MQ2007 with different client number (linear ranker and $p = 0.9$)}
-	\label{fig: mq2007-rq2-0.9}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=16cm, height=8cm]{v0_mq2007_foltr_clients_p09.png}
+%	\caption{Mean batch MaxRR for MQ2007 with different client number}
+%	\label{fig: mq2007clients}
+%\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=15cm, height=3.5cm]{mq2007_foltr_client_linear_p09.png}
+%	\caption{Mean batch MaxRR for MQ2007 with different client number (linear ranker and $p = 0.9$)}
+%	\label{fig: mq2007-rq2-0.9}
+%\end{figure}
 
 \subsection{Comparing FOLtR-ES with OLTR baselines}
 
