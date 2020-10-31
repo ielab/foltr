@@ -3,30 +3,36 @@
 In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.
 
 \subsection{Datasets}
-The datasets we use are MQ2007 and MQ2008~\cite{DBLP:journals/corr/QinL13}, MSLR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11} datasets, which are commonly-used offline learning to rank datasets. Each dataset contains a centain amount of queries and corresponding candidate documents. The query-document pairs are represented by feature vectors and relevance labels. For MQ2007 and MQ2008 datasets, the relevance labels value as 0 (not relevant), 1 (partially relevant) and 2 (perfecly relevant). The relevance annotations of MSLR-WEB10K range from 0 (not relevant) to 4 (perfectly relevant). Each dataset contains five splits, except for Yahoo! Webscope. More detailed information for each dataset can be found in Table \ref{table:1:dataset}.
+The original paper conducted experiments on MQ2007 and MQ2008 learning to rank dataset~\cite{DBLP:journals/corr/QinL13} which arguably small and outdated
+
+The datasets we use are MQ2007~\cite{DBLP:journals/corr/QinL13}, MSLR-WEB10K\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11} datasets, which are commonly-used offline learning to rank datasets. Each dataset contains a centain amount of queries and corresponding candidate documents.
+
+The query-document pairs are represented by feature vectors and relevance labels. For MQ2007 datasets, the relevance labels value as 0 (not relevant), 1 (partially relevant) and 2 (perfecly relevant). The relevance annotations of MSLR-WEB10K range from 0 (not relevant) to 4 (perfectly relevant). Each dataset contains five splits, except for Yahoo! Webscope. 
+
+%More detailed information for each dataset can be found in Table \ref{table:1:dataset}.
 
 %MQ2007 dataset contains 1692 unique queries and 69623 relevance labels. MQ2008 dataset contains 784 unique queries and 15211 relevance labels. For MQ2007 and MQ2008 dataset, each query-document pair contains 46 features.
 We use the original dataset in training and validating procedure without any preprocessing, such as feature selection or feature normalization.
 
-\begin{table}
-	\caption{Information for each dataset}
-	\label{table:1:dataset}
-	\centering
-	\begin{tabular}{l c c c}
-		%\lsptoprule
-		\hline
-		& & number of & \\
-		& queries&  relevance labels  & features \\
-		\midrule
-		MQ2007  &   1692  &    69623  &    46    \\
-		%\hline
-		MQ2008  &  784  &   15211  &    46    \\
-		%\hline
-		MSLR-WEB10K  &   XXX &   XXX  &    136  \\
-		%\lspbottomrule
-		\hline
-	\end{tabular}
-\end{table}
+%\begin{table}
+%	\caption{Information for each dataset}
+%	\label{table:1:dataset}
+%	\centering
+%	\begin{tabular}{l c c c}
+%		%\lsptoprule
+%		\hline
+%		& & number of & \\
+%		& queries&  labels  & features \\
+%		\midrule
+%		MQ2007  &   1,692  &    69,623  &    46    \\
+%		%\hline
+%		MSLR-WEB10K  &   10,000 &   9m  &    136  \\
+%		%\hline
+%		Yahoo  &   29,921 &   9m  &    700  \\
+%		%\lspbottomrule
+%		\hline
+%	\end{tabular}
+%\end{table}
 
 \subsection{Simulation}
 
