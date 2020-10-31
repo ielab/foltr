@@ -167,15 +167,33 @@ In the original work and in the sections above, FOLTR-ES was evaluated using Max
 	\end{subfigure}
 	\begin{subfigure}{1\textwidth}
 		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mslr10k_foltr_DCG_both_c2000_ps.png}
-		\caption{Mean batch nDCG@10 for MSLR10k}
+		\caption{Mean batch nDCG@10 for MSLR10k.}
 		\label{fig:mslr10k-rq4}
 	\end{subfigure}
 	\caption{Results for RQ4: performance of FOLTR-ES in terms of online nDCG@10 computed using relevance labels and the SERPs used for obtaining user iterations. \label{fig:RQ4}} 
 \end{figure}
 
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mq2007_foltr_PDGD_offline_ndcg_c2000_p1.0.png}
+		\caption{Mean batch nDCG@10 for MQ2007.}
+		\label{fig:mq2007-rq4-offline}
+	\end{subfigure}
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ3n4/mslr10k_foltr_PDGD_offline_ndcg_c2000_p1.0.png}
+		\caption{Mean batch nDCG@10 for MSLR10k.}
+		\label{fig:mslr10k-rq4-offline}
+	\end{subfigure}
+	\caption{Results for RQ4: performance of FOLTR-ES and PDGD in terms of offline nDCG@10. \label{fig:RQ4-offline}} 
+\end{figure}
 
-Results are reported in Figure~\ref{fig:RQ4}. It is interesting to compare these plots with those in Figure~\ref{fig:RQ1}, that relate to the unusual (for OLTR) evaluation setting used in the original FOLTR-ES work. By comparing the figures, we note that for MQ2007, FOLTR-ES can effectively learn rankers for perfect and navigational clicks. However, when the clicks become nosier (informational clicks), then FOLTR-ES learning is effective for the linear ranker but no learning occurs for the neural ranker: this is unlikely in the evaluation settings of the original work (Figure~\ref{fig:RQ1}). We note this finding repeating also for MSLR10k, but this time this affects both linear and neural rankers; we also note that the online performance in MSLR10k on navigational clicks are also quite unstable and exhibit little learning for specific values of $p$ and ranker type. These findings suggest that FOLTR-ES is yet far from being a solution that can be considered for use in practice, and more research is required for devising effective federated, privacy-aware OLTR techniques.
+Results are reported in Figure~\ref{fig:RQ4}. It is interesting to compare these plots with those in Figure~\ref{fig:RQ1}, that relate to the unusual (for OLTR) evaluation setting used in the original FOLTR-ES work. By comparing the figures, we note that for MQ2007, FOLTR-ES can effectively learn rankers for perfect and navigational clicks. However, when the clicks become nosier (informational clicks), then FOLTR-ES learning is effective for the linear ranker but no learning occurs for the neural ranker: this is unlikely in the evaluation settings of the original work (Figure~\ref{fig:RQ1}). We note this finding repeating also for MSLR10k, but this time this affects both linear and neural rankers; we also note that the online performance in MSLR10k on navigational clicks are also quite unstable and exhibit little learning for specific values of $p$ and ranker type. 
 
+
+We further investigate the performance of FOLTR-ES with respect to offline nDCG@10. Results are shown in Figure~\ref{fig:RQ4-offline}, and are plotted along with the offline nDCG@10 of PDGD for additional context. Also the offline performance confirm that FOLTR-ES does not provide stable learning across click settings, datasets and ranker types. We also note that the performance of PDGD are sensibly higher than that of FOLTR-ES, apart for the neural ranker on MQ2007 when perfect and navigational clicks are considered. 
+
+These findings suggest that FOLTR-ES is yet far from being a solution that can be considered for use in practice, and more research is required for devising effective federated, privacy-aware OLTR techniques.
 
 
 %To study the generalisation of FOLtR-ES to other common OLTR evaluation metrics, we use Discounted Cumulative Gain (DCG) to evaluate the users' experience in each interaction. We also compute NDCG@10 with the relevance labels to evaluate the central ranker with test data as we want to explore the stability of  performance in FOLtR-ES.
