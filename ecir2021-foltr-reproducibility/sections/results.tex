@@ -69,7 +69,24 @@ However, not all these findings are applicable to the results obtained when cons
 
 For answering RQ2 we vary thee number of clients involved in FOLTR-ES; we investigate the values \{50, 1,000, 2,000\}. Kharitonov~\cite{kharitonov2019federated} used 2,000 in the original experiments, and the impact of the number . To be able to fairly compare results across number of clients, we fixed the total number of ranker updates to 2,000,000; we also set $B = 4$ and vary the privatization parameter $p$ in \{0.5, 0.9, 1.0\}. We perform these experiments on all three datasets considered in this paper, but we omit to report results for Yahoo due to space limitations. 
 
-The results of these experiments are reported in Figure~\ref{label}. Our experiments show that little clients number will reduce the performance in the linear ranker. But for the neural ranker, the difference is minor.
+
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ2/mq2007_foltr_client_both_p0.9.png}
+		\caption{Mean batch MaxRR for MQ2007.}
+		\label{fig:mq2007-rq2}
+	\end{subfigure}
+	\begin{subfigure}{1\textwidth}
+		\includegraphics[width=15cm, height=3.5cm]{images/RQ2/mslr10k_foltr_client_both_p0.9.png}
+		\caption{Mean batch MaxRR for MSLR10k}
+		\label{fig:mslr10k-rq2}
+	\end{subfigure}
+	\caption{Results for RQ2: performance of FOLTR-ES with respect to number of clients. \label{fig:RQ2}} 
+\end{figure}
+
+
+The results of these experiments are reported in Figure~\ref{fig:RQ2}, and they are mixed. For MQ2007, the number of clients have little effect on the neural ranker used in FOLTR-ES, although when informational clicks are provided this ranker is less stable, although often more effective, if very few clients (50) are used. Having just 50 clients, instead, severally hits the performance of the linear ranker, when compared with 1,000 or 2,000 clients. The findings on MSLR10k, however, are different. In this dataset, a smaller number of clients (50), is generally better than larger numbers, both for linear and neural ranker. An exception to this is when considering navigational clicks: in this case the linear ranker obtains by far thee best performance with a small number of clients, but the neural ranker obtains the worst performance. This suggest that the number of clients greatly affects FOLTR-ES: but trends are not consistent across click types and datasets. 
 
 
 %To study the influence of number of clients, we perform experiments on MQ2007 and MSLR-WEB10K datasets. We vary the number of clients across \{50, 1000, 2000\} but set the fixed total updating times to 2000000 and set $B = 4$. We also set the privatization parameter $p$ across \{0.5, 0.9, 1.0\}.
