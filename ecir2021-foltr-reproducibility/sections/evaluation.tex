@@ -63,10 +63,11 @@ For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:co
 \end{table}
 
 \subsection{Evaluation metric}
+For direct comparison with the original FOLTR-ES work, we choose the reciprocal rank of the highest clicked result in each interaction (MaxRR~\cite{radlinski2008learning}). This metric is computed on the clicks produced by the simulated users on the SERPs. 
 
-For better reproducing and comparison with the original algorithm, we choose the reciprocal rank of the highest clicked result in each interaction, which is the same quality metric used in the original methods. 
+The evaluation setting above is unusual for OLTR. In RQ4, we also consider the more commonly used normalised Discounted Cumulative Gain (nDCG), as FOLTR-ES is designed to allow optimization based on any absolute measures of ranking quality. We thus record the nDCG@10 values from the relevance labels of the SERP displayed to users during interactions. This is referred to as online nDCG and the scores represent users' satisfaction~\cite{DBLP:conf/wsdm/HofmannSWR13}. We also record the nDCG@10 of the final learned ranker measured a heldout test set: this is refer to as offline nDCG.
 
-To further explore the effectiveness of FOLtR-ES on other widely used evaluation metrics for OLTR. We also train the model to optimize Discounted Cumulative Gain (DCG) of users experience during training, as FOLtR-ES is designed to allow optimization based on any absolute measures of ranking quality. For this part of experimental runs, on the one hand, we record nDCG@10 scores of the displaced rankings during training as the scores represent users' satisfaction, this is refer to as online nDCG score~\cite{DBLP:conf/wsdm/HofmannSWR13}, on the other hand, we also record the nDCG@10 of the final learned ranker on a heldout test set, this is refer to as offline nDCG score.
+
 \subsection{Baselines}
 
 To further study how far the FOLtR-ES is left behind with state-of-the-art OLTR methods on ranking quality, we train Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable} models as the baselines. Unlike many preview OLTR methods that are designed for linear models, PDGD also provides effective optimization for non-linear models such as neural models. During each interaction, a weighted differentiable pairwise loss is constructed in PDGD and the gradient is directly estimated by document pairs preferences inferred from user clicks. PDGD is empirically found to be significantly better than traditional OLTR methods in terms of final convergence, learning speed and user experience during optimization, making PDGD the current state-of-the-art method for OLTR~\cite{jagerman2019model,zhuang2020counterfactual}.
