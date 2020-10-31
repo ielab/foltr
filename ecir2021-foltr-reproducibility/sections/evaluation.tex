@@ -40,11 +40,11 @@ Because no public datasets with search log is available for online learning to r
 
 We follow the same method with FOLtR-ES for simulation. We sample $B$ queries for each client randomly and use the local perturbed model to rank the documents. The length for each ranking list is limited to 10 documents. After simulating user's clicks data, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranking model. Finally, each client receive the updated ranking model. 
 
-For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability with~\cite{kharitonov2019federated} for MQ2007 and~\cite{oosterhuis2016probabilistic} for MSLR-WEB10K. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  table 2 shows the parameters of three click models.
+For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}. We run instances of CCM using the same click probability and stop probability with~\cite{kharitonov2019federated} for MQ2007 and~\cite{oosterhuis2016probabilistic} for MSLR-WEB10K. Under CCM, users are assumed to go through the ranking list from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on relevance label $r$. After a click, the user stops with stop probability $P(stop = 1 | r)$ or continues otherwise. Usually three instantiations of CCM are considered in OLTR: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with noisiest feedback among three instantiations.  Table \ref{table:1:cm-mq2007} show the parameters of three click models.
 
 \begin{table}
 	\caption{Three click model instantiations for MQ2007 dataset}
-	\label{table:2:mq2007}
+	\label{table:1:cm-mq2007}
 	\centering
 	\begin{tabular}{l c c c c c c}
 		%\lsptoprule
@@ -64,7 +64,7 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 
 \begin{table}
 	\caption{Three click model instantiations for MSLR-WEB10K dataset}
-	\label{table:3:MSLR-WEB10K}
+	\label{table-cm-MSLR-WEB10K}
 	\centering
 	\begin{tabular}{l c c c c c c c c c c}
 		%\lsptoprule
@@ -82,13 +82,52 @@ For users' click simulation, we use Cascade Click Model (CCM)~\cite{DBLP:conf/ws
 	\end{tabular}
 \end{table}
 
+
+\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+\setlength{\tabcolsep}{3mm}
+\begin{table}[t!]
+	\centering
+	\caption[centre]{Three click model instantiations for MQ2007 dataset}\label{mq2007-CCM}
+	\begin{tabularx}{\textwidth}{XXXXXXXXXXX}
+		\toprule
+		& \multicolumn{5}{c}{$p(click=1|R)$} & \multicolumn{5}{c}{$p(stop=1|R)$} \\
+		\cmidrule(r){2-6}  \cmidrule(){7-11}
+		R & \tc{0}& \tc{1} &\tc{2} & \tc{3}& \tc{4}&  \tc{0} & \tc{1} & \tc{2} & \tc{3} & \tc{4} \\
+		\midrule
+		$perfect$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		$navigational$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
+		$informational$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
+		\bottomrule
+	\end{tabularx}
+	\vspace{-10pt}
+\end{table}
+
+%\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+\setlength{\tabcolsep}{3mm}
+\begin{table}[t!]
+	\centering
+	\caption[centre]{Three click model instantiations for MSLR-WEB10K dataset}\label{mslr-CCM}
+	\begin{tabularx}{\textwidth}{XXXXXXXXXXX}
+		\toprule
+		& \multicolumn{5}{c}{$p(click=1|R)$} & \multicolumn{5}{c}{$p(stop=1|R)$} \\
+		\cmidrule(r){2-6}  \cmidrule(){7-11}
+		R & \tc{0}& \tc{1} &\tc{2} & \tc{3}& \tc{4}&  \tc{0} & \tc{1} & \tc{2} & \tc{3} & \tc{4} \\
+		\midrule
+		$perfect$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		$navigational$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
+		$informational$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
+		\bottomrule
+	\end{tabularx}
+	\vspace{-10pt}
+\end{table}
+
 \subsection{Evaluation metric}
 As FOLtR-ES is designed to allow optimization based on any absolute measures of ranking quality, we can extend the original methods to other widely used evaluation metrics for OLTR. For better reproducing and comparison with the original algorithm, we choose the reciprocal rank of the highest clicked result in each interaction, which is the same quality metric used in the original methods. We also use Discounted Cumulative Gain (DCG) to evaluate the users' experience in each interaction and NDCG@10 to evaluate the central ranker as we want to explore the performance of FOLtR-ES on other metrics.
 
 \subsection{Baselines}
-To further study how far the FOLtR-ES is left behind with common OLTR methods on ranking quality, we train Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable} models as the baselines.
 
+To further study how far the FOLtR-ES is left behind with state-of-the-art OLTR methods on ranking quality, we train Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable} models as the baselines. Unlike many preview OLTR methods that are designed for linear models, PDGD also provides effective optimization for non-linear models such as neural models. During each interaction, a weighted differentiable pairwise loss is constructed in PDGD and the gradient is directly estimated by document pairs preferences inferred from user clicks. PDGD is empirically found to be significantly better than traditional OLTR methods in terms of final convergence, learning speed and user experience during optimization, making PDGD the current state-of-the-art method for OLTR~\cite{jagerman2019model,zhuang2020counterfactual}.
+ 
 \subsection{Models and Optimization}
 As we do not want to study the influence of ranking models to the original algorithm, we adopt the same models and optimization steps as~\cite{kharitonov2019federated}. The two ranking models are a linear ranker and a neural network with a single hidden layer of size 10. For optimization, we use Adam~\cite{kingma2014adam} with default parameters.
-
 
