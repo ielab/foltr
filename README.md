@@ -19,12 +19,16 @@ pip install -r requirements.txt
 
 ## Download datasets
 In the paper, four datasets are used, MQ2007/2008, MSLR-WEB10K and Yahoo!Webscope.
+
 MQ2007/2008 can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/letor-learning-rank-information-retrieval/).
+MSLR-WEB10K can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/mslr/).
+Yahoo!Webscope can be downloaded from [Yahoo Webscope program](https://webscope.sandbox.yahoo.com/).
 
 After downloading data files, they have to be unpacked within the `./code-and-results/data` folder.
 
 ## Reproducing results
 The main functions for our methods are stored at `./code-and-results/foltr` folder. The main fuctions for the original methods by [FOLTR-ES](https://github.com/facebookresearch/foltr-es) are stored at `./code-and-results/foltr-original` folder. 
+
 To reproduce our experiments reuslt, set up corresponding parameters and run file `./code-and-results/foltr_reproduce_run.py`
 ```
 python foltr_reproduce_run.py
