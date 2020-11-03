@@ -34,5 +34,7 @@ To reproduce our experiments reuslt, set up corresponding parameters and run fil
 python foltr_reproduce_run.py
 ```
 
+Our exeperiements result files and code to reproduce the plots in the paper are in the folder: `./code-and-results/results/`
+
 ## OLTR baselines
 We use Pairwise Differentiable Gradient Descent (PDGD) as the baselines.
