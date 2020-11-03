@@ -37,4 +37,8 @@ python foltr_reproduce_run.py
 Our exeperiements result files and code to reproduce the plots in the paper are in the folder: `./code-and-results/results/`
 
 ## OLTR baselines
-We use Pairwise Differentiable Gradient Descent (PDGD) as the baselines.
+We use Pairwise Differentiable Gradient Descent (PDGD) as the baselines. This method is proposed by Oosterhuis and de Rijke at CIKM 2018 [https://dl.acm.org/doi/pdf/10.1145/3269206.3271686](https://dl.acm.org/doi/pdf/10.1145/3269206.3271686).
+
+
+Our implementation of PDGD is in another github repo: [https://github.com/ArvinZhuang/OLTR](https://github.com/ArvinZhuang/OLTR).
+The run script that can reproduce the PDGD results presented in our paper is: `experiments/run_PDGD_batch_update.py`
