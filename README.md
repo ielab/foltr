@@ -22,7 +22,7 @@ In the paper, four datasets are used, MQ2007/2008, MSLR-WEB10K and Yahoo!Webscop
 
 MQ2007/2008 can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/letor-learning-rank-information-retrieval/).
 MSLR-WEB10K can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/mslr/).
-Yahoo!Webscope can be downloaded from [Yahoo Webscope program](https://webscope.sandbox.yahoo.com/).
+Yahoo!Webscope can be downloaded from [Yahoo Webscope program](https://webscope.sandbox.yahoo.com/catalog.php?datatype=c) and we used the Set 1 of C14B in our paper.
 
 After downloading data files, they have to be unpacked within the `./code-and-results/data` folder.
 
