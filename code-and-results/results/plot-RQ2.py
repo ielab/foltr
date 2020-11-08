@@ -12,8 +12,8 @@ NAVIGATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.05, 1: 0.3, 2: 0.5, 3: 
                                    stop_relevance={0: 0.2, 1: 0.3, 2: 0.5, 3: 0.7, 4: 0.9}, name="Navigational", depth=10)
 INFORMATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.4, 1: 0.6, 2: 0.7, 3: 0.8, 4: 0.9},
                                     stop_relevance={0: 0.1, 1: 0.2, 2: 0.3, 3: 0.4, 4: 0.5}, name="Informational", depth=10)
-
-dataset = 'mslr10k'
+# set parameters here
+dataset = 'yahoo'
 metric = "MRR"
 n_clients = 2000
 p = '0.9'
@@ -21,26 +21,30 @@ do_linear = False
 
 if dataset == 'mq2007':
     if metric == "MRR":
-        foltr_path1 = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(2000, p)
-        foltr_path2 = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(1000, p)
-        foltr_path3 = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(50, p)
-        foltr_path4 = "./foltr-results/RQ2_mq2007_foltr_c{}_p{}.npy".format(4000, p)
-    else:
-        foltr_path = "./v1-ndcg/mq2007_DCG_{}clients_p{}.npy".format(n_clients, p)
-else:
+        foltr_path1 = "./foltr-results/RQ2_mq2007_MaxRR_{}clients_p{}.npy".format(2000, p)
+        foltr_path2 = "./foltr-results/RQ2_mq2007_MaxRR_{}clients_p{}.npy".format(1000, p)
+        foltr_path3 = "./foltr-results/RQ2_mq2007_MaxRR_{}clients_p{}.npy".format(50, p)
+        # foltr_path4 = "./foltr-results/RQ2_mq2007_MaxRR_{}clients_p{}.npy".format(4000, p)
+elif dataset == 'mq2008':
     if metric == "MRR":
-        foltr_path1 = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(2000, p)
-        foltr_path2 = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(1000, p)
-        foltr_path3 = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(50, p)
-        foltr_path4 = "./foltr-results/RQ2_mslr_foltr_c{}_p{}.npy".format(4000, p)
-    else:
-        foltr_path = "./v1-ndcg/mslr10k_DCG_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path1 = "./foltr-results/RQ2_mq2008_MaxRR_{}clients_p{}.npy".format(2000, p)
+        foltr_path2 = "./foltr-results/RQ2_mq2008_MaxRR_{}clients_p{}.npy".format(1000, p)
+        foltr_path3 = "./foltr-results/RQ2_mq2008_MaxRR_{}clients_p{}.npy".format(50, p)
+elif dataset == 'mslr10k':
+    if metric == "MRR":
+        foltr_path1 = "./foltr-results/RQ2_mslr10k_MaxRR_{}clients_p{}.npy".format(2000, p)
+        foltr_path2 = "./foltr-results/RQ2_mslr10k_MaxRR_{}clients_p{}.npy".format(1000, p)
+        foltr_path3 = "./foltr-results/RQ2_mslr10k_MaxRR_{}clients_p{}.npy".format(50, p)
+elif dataset == 'yahoo':
+    if metric == "MRR":
+        foltr_path1 = "./foltr-results/RQ2_yahoo_MaxRR_{}clients_p{}.npy".format(2000, p)
+        foltr_path2 = "./foltr-results/RQ2_yahoo_MaxRR_{}clients_p{}.npy".format(1000, p)
+        foltr_path3 = "./foltr-results/RQ2_yahoo_MaxRR_{}clients_p{}.npy".format(50, p)
 
 
 foltr1 = np.load(foltr_path1, allow_pickle=True)
 foltr2 = np.load(foltr_path2, allow_pickle=True)
 foltr3 = np.load(foltr_path3, allow_pickle=True)
-foltr4 = np.load(foltr_path4, allow_pickle=True)
 common_params = dict(online_metric=ExpectedMetric(1.0),
                      n_clients=n_clients,
                      sessions_budget=2000000,
@@ -53,7 +57,6 @@ common_params = dict(online_metric=ExpectedMetric(1.0),
 click_model2sessions2trajectory1 = foltr1.tolist()
 click_model2sessions2trajectory2 = foltr2.tolist()
 click_model2sessions2trajectory3 = foltr3.tolist()
-click_model2sessions2trajectory4 = foltr4.tolist()
 
 sns.set(style="darkgrid")
 plt.close('all')
@@ -63,7 +66,6 @@ f, ax = plt.subplots(nrows=1, ncols=3, sharex=True)
 linear1, two_layer1 = click_model2sessions2trajectory1
 linear2, two_layer2 = click_model2sessions2trajectory2
 linear3, two_layer3 = click_model2sessions2trajectory3
-linear4, two_layer4 = click_model2sessions2trajectory4
 
 m = common_params['sessions_per_feedback'] * common_params['n_clients']
 mid = 0
@@ -71,12 +73,11 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
     Linear_ys1 = np.zeros(250)
     Linear_ys2 = np.zeros(500)
     Linear_ys3 = np.zeros(10000)
-    Linear_ys4 = np.zeros(125)
 
     Neural_ys1 = np.zeros(250)
     Neural_ys2 = np.zeros(500)
     Neural_ys3 = np.zeros(10000)
-    Neural_ys4 = np.zeros(125)
+
     for fold_id1, fold_trajectories1 in linear1[model.name].items():
 
         if model.name == "Informational":
@@ -137,37 +138,13 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
         Linear_ys3 += linear_ys3
         Neural_ys3 += neural_ys3
 
-    for fold_id4, fold_trajectories4 in linear4[model.name].items():
-
-        if model.name == "Informational":
-            click_model = "informational"
-        if model.name == "Navigational":
-            click_model = "navigational"
-        if model.name == "Perfect":
-            click_model = "perfect"
-            # data = [sum(group) / 40 for group in zip(*[iter(data)] * 40)]
-
-        if metric == "DCG":
-            linear_ys4 = np.array(fold_trajectories4.ndcg_clients) / n_clients
-
-        else:
-            linear_ys4 = np.array(fold_trajectories4.batch_metrics)
-            neural_ys4 = np.array(two_layer4[model.name][fold_id1].batch_metrics)
-
-        Linear_ys4 += linear_ys4
-        Neural_ys4 += neural_ys4
-
-    Linear_ys1 /= 5
-    Neural_ys1 /= 5
-
-    Linear_ys2 /= 5
-    Neural_ys2 /= 5
-
-    Linear_ys3 /= 5
-    Neural_ys3 /= 5
-
-    Linear_ys4 /= 5
-    Neural_ys4 /= 5
+    if dataset != "yahoo":
+        Linear_ys1 /= 5
+        Neural_ys1 /= 5
+        Linear_ys2 /= 5
+        Neural_ys2 /= 5
+        Linear_ys3 /= 5
+        Neural_ys3 /= 5
 
     Linear_ys2 = [sum(group) / 2 for group in zip(*[iter(Linear_ys2)] * 2)]
     Neural_ys2 = [sum(group) / 2 for group in zip(*[iter(Neural_ys2)] * 2)]
@@ -178,13 +155,10 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
     Linear_ys1 = smoothen_trajectory(Linear_ys1, group_size=4)
     Linear_ys2 = smoothen_trajectory(Linear_ys2, group_size=4)
     Linear_ys3 = smoothen_trajectory(Linear_ys3, group_size=4)
-    Linear_ys4 = smoothen_trajectory(Linear_ys4, group_size=4)
 
     Neural_ys1 = smoothen_trajectory(Neural_ys1, group_size=4)
     Neural_ys2 = smoothen_trajectory(Neural_ys2, group_size=4)
     Neural_ys3 = smoothen_trajectory(Neural_ys3, group_size=4)
-    Neural_ys4 = smoothen_trajectory(Neural_ys4, group_size=4)
-
 
     a = ax[mid]
     xs = np.array(range(len(Linear_ys1))) * m * 1e-3
@@ -202,7 +176,7 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
     if metric == "MRR":
         ax[0].set_ylabel("Mean batch MaxRR")
     # ax[mid].set_ylim([0.35, 0.74])
-    ax[mid].legend(loc='lower right', ncol=2, fontsize=12)
+    ax[mid].legend(loc='lower right', ncol=2, fontsize=7)
     mid += 1
 
 ax[1].set_xlabel("# interactions, thousands")

@@ -14,7 +14,13 @@ from foltr.client.client import RankingClient
 from foltr.client import rankers
 from foltr.data.datasets import DataSplit
 
+# used for RQ1/RQ2/RQ3
+# TrainResult = NamedTuple("TrainResult", [
+#                         ('batch_metrics', List[float]),
+#                         ('expected_metrics', List[float]),
+#                         ('ranker', torch.nn.Module)])
 
+# used for RQ4
 TrainResult = NamedTuple("TrainResult", [
                         ('batch_metrics', List[float]),
                         ('expected_metrics', List[float]),
@@ -23,7 +29,6 @@ TrainResult = NamedTuple("TrainResult", [
                         ('mrr_server', float),
                         ('ndcg_clients', float),
                         ('mrr_clients',float)])
-
 
 def train_uniform(params: Dict[str, Any], traindata: DataSplit, testdata: DataSplit ,letordataset, message) -> TrainResult:
     """

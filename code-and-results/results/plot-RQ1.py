@@ -13,39 +13,33 @@ NAVIGATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.05, 1: 0.3, 2: 0.5, 3: 
                                    stop_relevance={0: 0.2, 1: 0.3, 2: 0.5, 3: 0.7, 4: 0.9}, name="Navigational", depth=10)
 INFORMATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.4, 1: 0.6, 2: 0.7, 3: 0.8, 4: 0.9},
                                     stop_relevance={0: 0.1, 1: 0.2, 2: 0.3, 3: 0.4, 4: 0.5}, name="Informational", depth=10)
-
-dataset = 'yahoo'
+# set parameters here
+dataset = 'mq2008'
 metric = "MRR"
 n_clients = 2000
 p = '1.0'
 
+
 if dataset == 'mq2007':
     if metric == "MRR":
-        foltr_path = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(n_clients, p)
-        foltr_path09 = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(n_clients, 0.9)
-        foltr_path05 = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(n_clients, 0.5)
-        oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_ndcg.txt"
-
-    else:
-        foltr_path = "./v1-ndcg/mq2007_DCG_{}clients_p{}.npy".format(n_clients, p)
-
-        oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
-
+        foltr_path = "./foltr-results/RQ1_mq2007_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path09 = "./foltr-results/RQ1_mq2007_MaxRR_{}clients_p{}.npy".format(n_clients, 0.9)
+        foltr_path05 = "./foltr-results/RQ1_mq2007_MaxRR_{}clients_p{}.npy".format(n_clients, 0.5)
+elif dataset == 'mq2008':
+    if metric == "MRR":
+        foltr_path = "./foltr-results/RQ1_mq2008_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path09 = "./foltr-results/RQ1_mq2008_MaxRR_{}clients_p{}.npy".format(n_clients, 0.9)
+        foltr_path05 = "./foltr-results/RQ1_mq2008_MaxRR_{}clients_p{}.npy".format(n_clients, 0.5)
 elif dataset == 'mslr10k':
     if metric == "MRR":
-        foltr_path = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(n_clients, p)
-        foltr_path09 = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(n_clients, 0.9)
-        foltr_path05 = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(n_clients, 0.5)
-        oltr_path = "./PDGD/mslr10k/MSLR10K_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
-    else:
-        foltr_path = "./v1-ndcg/mslr10k_DCG_{}clients_p{}.npy".format(n_clients, p)
-        oltr_path = "./PDGD/mslr10k/MSLR10K_batch_update_size{}_grad_add/fold{}/{}_run1_cndcg.txt"
-else:
+        foltr_path = "./foltr-results/RQ1_mslr10k_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path09 = "./foltr-results/RQ1_mslr10k_MaxRR_{}clients_p{}.npy".format(n_clients, 0.9)
+        foltr_path05 = "./foltr-results/RQ1_mslr10k_MaxRR_{}clients_p{}.npy".format(n_clients, 0.5)
+elif dataset == 'yahoo':
     if metric == "MRR":
-        foltr_path = "./foltr-results/v0_yahoo_foltr_results_{}clients_p{}.npy".format(n_clients, p)
-        foltr_path09 = "./foltr-results/v0_yahoo_foltr_results_{}clients_p{}.npy".format(n_clients, 0.9)
-        foltr_path05 = "./foltr-results/v0_yahoo_foltr_results_{}clients_p{}.npy".format(n_clients, 0.5)
-        oltr_path = "./PDGD/yahoo/yahoo_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
+        foltr_path = "./foltr-results/RQ1_yahoo_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path09 = "./foltr-results/RQ1_yahoo_MaxRR_{}clients_p{}.npy".format(n_clients, 0.9)
+        foltr_path05 = "./foltr-results/RQ1_yahoo_MaxRR_{}clients_p{}.npy".format(n_clients, 0.5)
 
 foltr = np.load(foltr_path, allow_pickle=True)
 foltr09 = np.load(foltr_path09, allow_pickle=True)
@@ -165,7 +159,7 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
 
     if metric == "MRR":
         ax[0].set_ylabel("Mean batch MaxRR")
-    ax[mid].legend(loc='lower right', ncol=2, fontsize=12)
+    ax[mid].legend(loc='lower right', ncol=2, fontsize=7)
 
     mid += 1
 

@@ -14,28 +14,25 @@ NAVIGATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.05, 1: 0.3, 2: 0.5, 3: 
                                    stop_relevance={0: 0.2, 1: 0.3, 2: 0.5, 3: 0.7, 4: 0.9}, name="Navigational", depth=10)
 INFORMATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.4, 1: 0.6, 2: 0.7, 3: 0.8, 4: 0.9},
                                     stop_relevance={0: 0.1, 1: 0.2, 2: 0.3, 3: 0.4, 4: 0.5}, name="Informational", depth=10)
-
-dataset = 'mq2007'
-metric = "DCG"
+# set parameters here
+dataset = 'yahoo'
+metric = "MRR"
 n_clients = 2000
 p = '1.0'
 do_PDGD = True
 
 if dataset == 'mq2007':
     if metric == "MRR":
-        foltr_path = "./foltr-results/v0_mq2007_foltr_results_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path = "./foltr-results/RQ3_mq2007_MaxRR_{}clients_p{}.npy".format(n_clients, p)
         oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
-
-    else:
-        foltr_path = "./foltr-results/mq2007_DCG_{}clients_p{}.npy".format(n_clients, p)
-        oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_ndcg.txt"
-else:
+elif dataset == 'mslr10k':
     if metric == "MRR":
-        foltr_path = "./foltr-results/v0_mslr_foltr_results_{}clients_p{}.npy".format(n_clients, p)
-        oltr_path = "./PDGD/mslr10k/MSLR10K_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
-    else:
-        foltr_path = "./foltr-results/mslr10k_DCG_{}clients_p{}.npy".format(n_clients, p)
-        oltr_path = "./PDGD/MSLR10K/MSLR10K_batch_update_size{}_grad_add/fold{}/{}_run1_cndcg.txt"
+        foltr_path = "./foltr-results/RQ3_mslr10k_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        oltr_path = "./PDGD/MSLR10K/MSLR10K_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
+elif dataset == 'yahoo':
+    if metric == "MRR":
+        foltr_path = "./foltr-results/RQ3_yahoo_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        oltr_path = "./PDGD/yahoo/yahoo_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
 
 
 foltr = np.load(foltr_path, allow_pickle=True)
@@ -79,7 +76,7 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
             # data = [sum(group) / 40 for group in zip(*[iter(data)] * 40)]
 
         if metric == "DCG":
-            linear_ys = np.array(fold_trajectories.ndcg_server)
+            linear_ys = np.array(fold_trajectories.ndcg_clients) / n_clients
             neural_ys = np.array(two_layer[model.name][fold_id].ndcg_clients) / n_clients
         else:
             linear_ys = np.array(fold_trajectories.batch_metrics)
@@ -91,9 +88,11 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
         # if len(linear_ys) > 250:
         #     ys = [sum(group) / 40 for group in zip(*[iter(ys)] * 40)]
 
-    Linear_ys /= 5
-    Neural_ys /= 5
-    all_PDGD_ys /= 5
+    if dataset != "yahoo":
+        Linear_ys /= 5
+        Neural_ys /= 5
+        all_PDGD_ys /= 5
+
     Linear_ys = smoothen_trajectory(Linear_ys, group_size=4)
     Neural_ys = smoothen_trajectory(Neural_ys, group_size=4)
 
