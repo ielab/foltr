@@ -2,7 +2,7 @@
 
 This repo contains the code used to run experiments for the paper 'Federated Online Learning to Rank with Evolution Strategies: A Reproducibility Study', submmited to ECIR 2021.
 
-Our work intends to reproduce the orginial work: Reproducing federated online learning to rank with evolution strategies (FOLTR-ES). The original repository can be found at: https://github.com/facebookresearch/foltr-es
+Our work intends to reproduce the orginial work: Federated online learning to rank with evolution strategies (FOLTR-ES). The original repository can be found at: https://github.com/facebookresearch/foltr-es
 
 Here are few steps for reproduce our experiments.
 
@@ -20,9 +20,9 @@ pip install -r requirements.txt
 ## Download datasets
 In the paper, four datasets are used, MQ2007/2008, MSLR-WEB10K and Yahoo!Webscope.
 
-MQ2007/2008 can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/letor-learning-rank-information-retrieval/).
-MSLR-WEB10K can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/mslr/).
-Yahoo!Webscope can be downloaded from [Yahoo Webscope program](https://webscope.sandbox.yahoo.com/catalog.php?datatype=c) and we used the Set 1 of C14B in our paper.
+MQ2007/2008 can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/letor-learning-rank-information-retrieval/).  
+MSLR-WEB10K can be downloaded from the Microsoft Research [website](https://www.microsoft.com/en-us/research/project/mslr/).  
+Yahoo!Webscope can be downloaded from [Yahoo Webscope program](https://webscope.sandbox.yahoo.com/catalog.php?datatype=c) and we used Set 1 of C14B dataset in our paper.
 
 After downloading data files, they have to be unpacked within the `./code-and-results/data` folder.
 
@@ -34,7 +34,11 @@ To reproduce our experiments reuslt, set up corresponding parameters and run fil
 python foltr_reproduce_run.py
 ```
 
-Our exeperiements result files and code to reproduce the plots in the paper are in the folder: `./code-and-results/results/`
+Our exeperiements result files and code to reproduce the plots in the paper are in the folder: `./code-and-results/results/`.
+
+All figures for RQ1 can be found at `./code-and-results/results/figures/RQ1`.  
+All figures for RQ2 can be found at `./code-and-results/results/figures/RQ2`.  
+All figures for RQ3 and RQ4 can be found at `./code-and-results/results/figures/RQ3-4`.
 
 ## OLTR baselines
 We use Pairwise Differentiable Gradient Descent (PDGD) as the baselines. This method is proposed by Oosterhuis and de Rijke at CIKM 2018 [https://dl.acm.org/doi/pdf/10.1145/3269206.3271686](https://dl.acm.org/doi/pdf/10.1145/3269206.3271686).
