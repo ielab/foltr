@@ -49,7 +49,7 @@ click_model2sessions2trajectory = foltr.tolist()
 
 sns.set(style="darkgrid")
 plt.close('all')
-rcParams['figure.figsize'] = 12, 2
+rcParams['figure.figsize'] = 21, 5
 f, ax = plt.subplots(nrows=1, ncols=3, sharex=True)
 
 linear, two_layer = click_model2sessions2trajectory

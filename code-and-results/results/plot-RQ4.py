@@ -14,23 +14,24 @@ NAVIGATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.05, 1: 0.3, 2: 0.5, 3: 
                                    stop_relevance={0: 0.2, 1: 0.3, 2: 0.5, 3: 0.7, 4: 0.9}, name="Navigational", depth=10)
 INFORMATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.4, 1: 0.6, 2: 0.7, 3: 0.8, 4: 0.9},
                                     stop_relevance={0: 0.1, 1: 0.2, 2: 0.3, 3: 0.4, 4: 0.5}, name="Informational", depth=10)
-# set parameters here
-# dataset = 'mq2007'
-# metric = "online nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
-# n_clients = 2000
-# p = '1.0'
-# do_PDGD = False
-# do_p = True
-# ranker = 'both'
 
-# set parameters here
+# if you want to plot online nDCG performance, set parameters here
 dataset = 'yahoo'
-metric = "offline nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
+metric = "online nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
 n_clients = 2000
 p = '1.0'
 do_PDGD = True
 do_p = False
 ranker = 'both'
+
+# if you want to plot offline nDCG performance, set parameters here
+# dataset = 'yahoo'
+# metric = "offline nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
+# n_clients = 2000
+# p = '1.0'
+# do_PDGD = True
+# do_p = False
+# ranker = 'both'
 
 
 if dataset == 'mq2007':
@@ -89,7 +90,7 @@ click_model2sessions2trajectory05 = foltr05.tolist()
 sns.set(style="darkgrid")
 plt.close('all')
 # rcParams['figure.figsize'] = 12, 2
-rcParams['figure.figsize'] = 22, 4
+rcParams['figure.figsize'] = 22, 5
 f, ax = plt.subplots(nrows=1, ncols=3, sharex=True)
 
 linear, two_layer = click_model2sessions2trajectory
