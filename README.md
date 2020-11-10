@@ -68,9 +68,11 @@ Our experiments result files and code to reproduce the plots in the paper are in
 ### Figures for RQ3: performance of FOLTR-ES and PDGD across datasets
 (a) Mean batch MaxRR for MQ2007 (averaged on all dataset splits)
 ![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/mq2007_foltr_PDGD_mrr_c2000_p1.0.png)
-(b) Mean batch MaxRR for MSLR10k (averaged on all dataset splits)
+(b) Mean batch MaxRR for MQ2008 (averaged on all dataset splits)
+![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/mq2008_foltr_PDGD_mrr_c2000_p1.0.png)
+(c) Mean batch MaxRR for MSLR10k (averaged on all dataset splits)
 ![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/mslr10k_foltr_PDGD_mrr_c2000_p1.0.png)
-(c) Mean batch MaxRR for Yahoo
+(d) Mean batch MaxRR for Yahoo
 ![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/yahoo_foltr_PDGD_mrr_c2000_p1.0.png)
 
 ### Figures for RQ4: performance of FOLTR-ES in terms of online nDCG@10
@@ -86,7 +88,9 @@ Our experiments result files and code to reproduce the plots in the paper are in
 ### Figures for RQ4: performance of FOLTR-ES and PDGD in terms of offine nDCG@10
 (a) Mean batch nDCG@10 for MQ2007 (averaged on all dataset splits)
 ![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/mq2007_foltr_PDGD_offline_ndcg_c2000_p1.0.png)
-(b) Mean batch nDCG@10 for MSLR10k (averaged on all dataset splits)
+(b) Mean batch nDCG@10 for MQ2008 (averaged on all dataset splits)
+![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/mq2008_foltr_PDGD_offline_ndcg_c2000_p1.0.png)
+(c) Mean batch nDCG@10 for MSLR10k (averaged on all dataset splits)
 ![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/mslr10k_foltr_PDGD_offline_ndcg_c2000_p1.0.png)
-(c) Mean batch nDCG@10 for Yahoo
+(d) Mean batch nDCG@10 for Yahoo
 ![image](https://github.com/ielab/foltr/blob/master/code-and-results/results/figures/RQ3-4/yahoo_foltr_PDGD_offline_ndcg_c2000_p1.0.png)
