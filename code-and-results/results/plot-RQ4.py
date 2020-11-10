@@ -16,22 +16,22 @@ INFORMATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.4, 1: 0.6, 2: 0.7, 3: 
                                     stop_relevance={0: 0.1, 1: 0.2, 2: 0.3, 3: 0.4, 4: 0.5}, name="Informational", depth=10)
 
 # if you want to plot online nDCG performance, set parameters here
-dataset = 'yahoo'
-metric = "online nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
+# dataset = 'mq2008'
+# metric = "online nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
+# n_clients = 2000
+# p = '1.0'
+# do_PDGD = False
+# do_p = True
+# ranker = 'both'
+
+# if you want to plot offline nDCG performance, set parameters here
+dataset = 'mq2008'
+metric = "offline nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
 n_clients = 2000
 p = '1.0'
 do_PDGD = True
 do_p = False
 ranker = 'both'
-
-# if you want to plot offline nDCG performance, set parameters here
-# dataset = 'yahoo'
-# metric = "offline nDCG" # plotting the 'online nDCG' performance; otherwise, using 'offline nDCG' as output
-# n_clients = 2000
-# p = '1.0'
-# do_PDGD = True
-# do_p = False
-# ranker = 'both'
 
 
 if dataset == 'mq2007':
@@ -39,12 +39,23 @@ if dataset == 'mq2007':
         foltr_path = "./foltr-results/RQ4_mq2007_nDCG_{}clients_p{}.npy".format(n_clients, p)
         foltr_path09 = "./foltr-results/RQ4_mq2007_nDCG_{}clients_p{}.npy".format(n_clients, 0.9)
         foltr_path05 = "./foltr-results/RQ4_mq2007_nDCG_{}clients_p{}.npy".format(n_clients, 0.5)
-        oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_cndcg.txt"
+        oltr_path = "./PDGD/mq2007/MQ2007_batch_update_size{}_grad_add/fold{}/{}_run1_cndcg.txt"
     elif metric == "offline nDCG":
         foltr_path = "./foltr-results/RQ4_mq2007_nDCG_{}clients_p{}.npy".format(n_clients, p)
         foltr_path09 = "./foltr-results/RQ4_mq2007_nDCG_{}clients_p{}.npy".format(n_clients, 0.9)
         foltr_path05 = "./foltr-results/RQ4_mq2007_nDCG_{}clients_p{}.npy".format(n_clients, 0.5)
-        oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_ndcg.txt"
+        oltr_path = "./PDGD/mq2007/MQ2007_batch_update_size{}_grad_add/fold{}/{}_run1_ndcg.txt"
+elif dataset == 'mq2008':
+    if metric == "online nDCG":
+        foltr_path = "./foltr-results/RQ4_mq2008_nDCG_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path09 = "./foltr-results/RQ4_mq2008_nDCG_{}clients_p{}.npy".format(n_clients, 0.9)
+        foltr_path05 = "./foltr-results/RQ4_mq2008_nDCG_{}clients_p{}.npy".format(n_clients, 0.5)
+        oltr_path = "./PDGD/mq2008/MQ2008_batch_update_size{}_grad_add/fold{}/{}_run1_cndcg.txt"
+    elif metric == "offline nDCG":
+        foltr_path = "./foltr-results/RQ4_mq2008_nDCG_{}clients_p{}.npy".format(n_clients, p)
+        foltr_path09 = "./foltr-results/RQ4_mq2008_nDCG_{}clients_p{}.npy".format(n_clients, 0.9)
+        foltr_path05 = "./foltr-results/RQ4_mq2008_nDCG_{}clients_p{}.npy".format(n_clients, 0.5)
+        oltr_path = "./PDGD/mq2008/MQ2008_batch_update_size{}_grad_add/fold{}/{}_run1_ndcg.txt"
 elif dataset == 'mslr10k':
     if metric == "online nDCG":
         foltr_path = "./foltr-results/RQ4_mslr10k_nDCG_{}clients_p{}.npy".format(n_clients, p)
@@ -90,7 +101,7 @@ click_model2sessions2trajectory05 = foltr05.tolist()
 sns.set(style="darkgrid")
 plt.close('all')
 # rcParams['figure.figsize'] = 12, 2
-rcParams['figure.figsize'] = 22, 5
+rcParams['figure.figsize'] = 28, 3
 f, ax = plt.subplots(nrows=1, ncols=3, sharex=True)
 
 linear, two_layer = click_model2sessions2trajectory
@@ -238,8 +249,8 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
             a.plot(xs, Neural_ys05, label=f"Neural, p=0.5", color='C1', linestyle='dashed', marker='o', markevery=10,
                    markersize=4)
     else:
-        a.plot(xs, Linear_ys, label=f"1-Layer")
-        a.plot(xs, Neural_ys, label=f"2-Layer")
+        a.plot(xs, Linear_ys, label=f"Linear")
+        a.plot(xs, Neural_ys, label=f"Neural")
 
         if do_PDGD:
             xs = np.array(range(len(all_PDGD_ys))) * m * 1e-3
@@ -251,7 +262,7 @@ for row, model in enumerate([PERFECT_MODEL, NAVIGATIONAL_MODEL, INFORMATIONAL_MO
         ax[0].set_ylabel("Mean batch nDCG")
     else:
         ax[0].set_ylabel("Mean batch MaxRR")
-    ax[mid].legend(loc='lower right', ncol=2, fontsize=8)
+    ax[mid].legend(loc='lower right', ncol=2, fontsize=7)
 
     mid += 1
 

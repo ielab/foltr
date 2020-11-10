@@ -15,7 +15,7 @@ NAVIGATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.05, 1: 0.3, 2: 0.5, 3: 
 INFORMATIONAL_MODEL = CcmClickModel(click_relevance={0: 0.4, 1: 0.6, 2: 0.7, 3: 0.8, 4: 0.9},
                                     stop_relevance={0: 0.1, 1: 0.2, 2: 0.3, 3: 0.4, 4: 0.5}, name="Informational", depth=10)
 # set parameters here
-dataset = 'yahoo'
+dataset = 'mq2008'
 metric = "MRR"
 n_clients = 2000
 p = '1.0'
@@ -24,7 +24,11 @@ do_PDGD = True
 if dataset == 'mq2007':
     if metric == "MRR":
         foltr_path = "./foltr-results/RQ3_mq2007_MaxRR_{}clients_p{}.npy".format(n_clients, p)
-        oltr_path = "./PDGD/mq2007/mq2007_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
+        oltr_path = "./PDGD/mq2007/MQ2007_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
+elif dataset == 'mq2008':
+    if metric == "MRR":
+        foltr_path = "./foltr-results/RQ3_mq2008_MaxRR_{}clients_p{}.npy".format(n_clients, p)
+        oltr_path = "./PDGD/mq2008/MQ2008_batch_update_size{}_grad_add/fold{}/{}_run1_cmrr.txt"
 elif dataset == 'mslr10k':
     if metric == "MRR":
         foltr_path = "./foltr-results/RQ3_mslr10k_MaxRR_{}clients_p{}.npy".format(n_clients, p)
@@ -49,7 +53,7 @@ click_model2sessions2trajectory = foltr.tolist()
 
 sns.set(style="darkgrid")
 plt.close('all')
-rcParams['figure.figsize'] = 21, 5
+rcParams['figure.figsize'] = 26, 4
 f, ax = plt.subplots(nrows=1, ncols=3, sharex=True)
 
 linear, two_layer = click_model2sessions2trajectory
