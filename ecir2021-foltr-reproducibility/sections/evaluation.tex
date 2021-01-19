@@ -1,46 +1,15 @@
 \section{Experimental Settings}
 
-%<<<<<<< HEAD
-%In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.\footnote{The code for reproducing the experiments in this paper are available at~\url{https://github.com/Karlywang/foltr-reproduce}} 
-%=======
-%In this section, we introduce the experimental settings to answer the research questions addressed in Section. 1.\footnote{The code for reproducing the experiments in this paper are available at~\url{https://github.com/ielab/foltr}} 
-%>>>>>>> 43ff9dbe5c5558c59adce8d48de65ad5d6611c33
-
 \subsection{Datasets}
-The original work of Kharitonov~\cite{kharitonov2019federated} conducted experiments on the MQ2007 and MQ2008 learning to rank datasets~\cite{DBLP:journals/corr/QinL13}, which are arguably small and outdated. In our work, we instead consider more recent and lager datasets: MSLR-WEB10K~\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11}, which are commonly-used in offline and online learning to rank~\cite{zhuang2020counterfactual,DBLP:conf/wsdm/HofmannSWR13,jagerman2019model,oosterhuis2018differentiable}. Compared to MQ2007/2008, both MSLR-WEB10K and Yahoo! use 5-level graded relevance judgements, ranging from 0 (not relevant) to 4 (perfectly relevant).
-Each dataset contains many more queries and corresponding candidate documents than MQ2007/2008: MSLR-WEB10K has 10,000 queries, with each query having 125 assessed documents on average, while Yahoo! has 29,921 queries with 709,877 documents. In addition, both datasets have much richer and numerous features. MSLR-WEB10K has 136 features and Yahoo! 700. For direct comparison with the original FOLTR-ES work, we also use MQ2007/2008.
-%More detailed information for each dataset can be found in Table \ref{table:1:dataset}.
-
-%MQ2007 dataset contains 1692 unique queries and 69623 relevance labels. MQ2008 dataset contains 784 unique queries and 15211 relevance labels. For MQ2007 and MQ2008 dataset, each query-document pair contains 46 features.
-
-
-%\begin{table}
-%	\caption{Information for each dataset}
-%	\label{table:1:dataset}
-%	\centering
-%	\begin{tabular}{l c c c}
-%		%\lsptoprule
-%		\hline
-%		& & number of & \\
-%		& queries&  labels  & features \\
-%		\midrule
-%		MQ2007  &   1,692  &    69,623  &    46    \\
-%		%\hline
-%		MSLR-WEB10K  &   10,000 &   9m  &    136  \\
-%		%\hline
-%		Yahoo  &   29,921 &   9m  &    700  \\
-%		%\lspbottomrule
-%		\hline
-%	\end{tabular}
-%\end{table}
+The original work of Kharitonov~\cite{kharitonov2019federated} conducted experiments on the MQ2007 and MQ2008 learning to rank datasets~\cite{DBLP:journals/corr/QinL13}, which are arguably small and outdated. In our work, we instead consider more recent and lager datasets: MSLR-WEB10K~\cite{DBLP:journals/corr/QinL13} and Yahoo! Webscope~\cite{DBLP:journals/jmlr/ChapelleC11}, which are commonly-used in offline and online learning to rank~\cite{zhuang2020counterfactual,hofmann2013reusing,jagerman2019model,oosterhuis2018differentiable}. Compared to MQ2007/2008, both MSLR-WEB10K and Yahoo! use 5-level graded relevance judgements, ranging from 0 (not relevant) to 4 (perfectly relevant).
+Each dataset contains many more queries and corresponding candidate documents than MQ2007/2008: MSLR-WEB10K has 10,000 queries, with each query having 125 assessed documents on average, while Yahoo! has 29,921 queries with 709,877 documents. In addition, both datasets have much richer and numerous features. MSLR-WEB10K has 136 features and Yahoo! 700. For direct comparison with the original FOLtR-ES work, we also use MQ2007/2008.
 
 \subsection{Simulation}
-It is common practice in OLTR to use LTR datasets and simulate user interactions~\cite{DBLP:conf/wsdm/SchuthOWR16, DBLP:conf/wsdm/HofmannSWR13}. This is because no public dataset with LTR features and clicks is available; in addition OLTR methods directly manipulate the rankings that have to be shown to users, so even if a public dataset with LTR features and clicks was to be available, this could not be used for OLTR. Thus, we simulate users and their reaction with the search results using labelled offline learning to rank datasets, akin to previous work~\cite{DBLP:conf/wsdm/SchuthOWR16, DBLP:conf/wsdm/HofmannSWR13}.
+It is common practice in OLTR to use LTR datasets and simulate user interactions~\cite{DBLP:conf/wsdm/SchuthOWR16, hofmann2013reusing}. This is because no public dataset with LTR features and clicks is available; in addition OLTR methods directly manipulate the rankings that have to be shown to users, so even if a public dataset with LTR features and clicks was to be available, this could not be used for OLTR. Thus, we simulate users and their reaction with the search results using labelled offline learning to rank datasets, akin to previous work~\cite{DBLP:conf/wsdm/SchuthOWR16, hofmann2013reusing}.
 
-For thee experiment, we follow the same method used by the original FOLTR-ES work. We sample $B$ queries for each client randomly and use the local perturbed model to rank documents. The length for each ranking list is limited to 10 documents. After simulating users clicks, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranker. Finally, each client receives the updated ranker. 
+For the experiment, we follow the same method used by the original FOLtR-ES work. We sample $B$ queries for each client randomly and use the local perturbed model to rank documents. The length for each ranking list is limited to 10 documents. After simulating users clicks, we record the quality metric for each interaction and perform the privatization procedure with probability $p$. Next, we send the averaged metric and pseudo-random seed to optimize the centralized ranker. Finally, each client receives the updated ranker. 
 
-For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}, as in the original FOLTR-ES work. We run instances of CCM using the same click probabilities and stop probabilities for MSLR-WEB10K and Yahoo!. Under CCM, the users are assumed to examine a SERP from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on the relevance label $r$. After a click occurs, the user stops with stop probability $P(stop = 1 | r)$, or continues otherwise. It is common practice in OLTR too consider three instantiations of the CCM: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with thhe noisiest feedback among three instantiations.  Table~\ref{mslr-CCM} summarises the parameters of three click models. For simulating clicks for the MQ2007/2008, we use the same parameter settings from Table 1 in the original FOLTR-ES paper: these partially different from those used for MSLR-WEB10K and Yahoo! because relevance labels in these datasets are graded, while they are binary in MQ2007/2008.
-
+For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:conf/wsdm/GuoLW09}, as in the original FOLtR-ES work. We run instances of CCM using the same click probabilities and stop probabilities for MSLR-WEB10K and Yahoo!. Under CCM, the users are assumed to examine a SERP from top to bottom. Each document is examined and clicked with click probability $P(click = 1 | r)$, conditioned on the relevance label $r$. After a click occurs, the user stops with stop probability $P(stop = 1 | r)$, or continues otherwise. It is common practice in OLTR to consider three instantiations of the CCM: a $perfect$ user with very reliable feedback, a $navigational$ user searching for reasonably relevant documents, and an $informational$ user with the noisiest feedback among three instantiations.  Table~\ref{mslr-CCM} summarises the parameters of three click models. For simulating clicks for the MQ2007/2008, we use the same parameter settings from Table 1 in the original FOLtR-ES paper: these partially different from those used for MSLR-WEB10K and Yahoo! {\color{red}{because relevance labels in these datasets are five-graded, while they are three-graded in MQ2007/2008.}}
 
 \newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
 \setlength{\tabcolsep}{3mm}
@@ -54,7 +23,7 @@ For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:co
 		\cmidrule(r){2-6}  \cmidrule(){7-11}
 		R & \tc{0}& \tc{1} &\tc{2} & \tc{3}& \tc{4}&  \tc{0} & \tc{1} & \tc{2} & \tc{3} & \tc{4} \\
 		\midrule
-		$perf$ & 0.0 & 0.2 & 0.4 & 0.8 & 0.1& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		$perf$ & 0.0 & 0.2 & 0.4 & 0.8 & 1.0& 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
 		$nav$ & 0.05 & 0.3 & 0.5 & 0.7 & 0.95& 0.2 & 0.3 & 0.5 & 0.7 & 0.9\\
 		$inf$ & 0.4 & 0.6 & 0.7 & 0.8 & 0.9& 0.1 & 0.2 & 0.3 & 0.4 & 0.5\\
 		\bottomrule
@@ -63,15 +32,13 @@ For simulating users' clicks, we use the Cascade Click Model (CCM)~\cite{DBLP:co
 \end{table}
 
 \subsection{Evaluation metric}
-For direct comparison with the original FOLTR-ES work, we use the reciprocal rank of the highest clicked result in each interaction (MaxRR~\cite{radlinski2008learning}). This metric is computed on the clicks produced by the simulated users on the SERPs. 
+For direct comparison with the original FOLtR-ES work, we use the reciprocal rank of the highest clicked result in each interaction (MaxRR~\cite{radlinski2008learning}). This metric is computed on the clicks produced by the simulated users on the SERPs. 
 
-The evaluation setting above is unusual for OLTR. In RQ4, we also consider the more commonly used normalised Discounted Cumulative Gain (nDCG), as FOLTR-ES is designed to allow optimization based on any absolute measures of ranking quality. We thus record the nDCG@10 values from the relevance labels of the SERP displayed to users during interactions. This is referred to as online nDCG and the scores represent users' satisfaction~\cite{DBLP:conf/wsdm/HofmannSWR13}. We also record the nDCG@10 of the final learned ranker measured a heldout test set: this is refer to as offline nDCG.
-
-
-\subsection{FOLTR-ES and Comparison OLTR Methods}
-In all experiments, we adopt the same models and optimization steps used by Kharitonov~\cite{kharitonov2019federated}, and rely on the well document implementation made publicly available by the author. The two ranking models used by FOLTR-ES are a linear ranker and a neural ranker with a single hidden layer of size 10. For optimization, we use Adam~\cite{kingma2014adam} with default parameters.
+The evaluation setting above is unusual for OLTR. In RQ4, we also consider the more commonly used normalised Discounted Cumulative Gain (nDCG), as FOLtR-ES is designed to allow optimization based on any absolute measures of ranking quality. We thus record the nDCG@10 values from the relevance labels of the SERP displayed to users during interactions. This is referred to as online nDCG and the scores represent users' satisfaction~\cite{hofmann2013reusing}. We also record the nDCG@10 of the final learned ranker measured a heldout test set: this is refer to as offline nDCG.
 
 
+\subsection{FOLtR-ES and Comparison OLTR Methods}
+In all experiments, we adopt the same models and optimization steps used by Kharitonov~\cite{kharitonov2019federated}, and rely on the well document implementation made publicly available by the author. The two ranking models used by FOLtR-ES are a linear ranker and a neural ranker with a single hidden layer of size 10. For optimization, we use Adam~\cite{kingma2014adam} with default parameters.
 
-To study how well FOLTR-ES compares with current state-of-the-art OLTR (RQ3), we implemented the Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable}. Unlike many previous OLTR methods that are designed for linear models, PDGD also provides effective optimization for non-linear models such as neural rankers. During each interaction, a weighted differentiable pairwise loss is constructed in PDGD and the gradient is directly estimated by document pairs preferences inferred from user clicks. PDGD has been empirically found to be significantly better than traditional OLTR methods in terms of final convergence, learning speed and user experience during optimization, making PDGD the current state-of-the-art method for OLTR~\cite{oosterhuis2018differentiable,jagerman2019model,zhuang2020counterfactual}.
+To study how well FOLtR-ES compares with current state-of-the-art OLTR (RQ3), we implemented the Pairwise Differentiable Gradient Descent (PDGD)~\cite{oosterhuis2018differentiable}. Unlike many previous OLTR methods that are designed for linear models, PDGD also provides effective optimization for non-linear models such as neural rankers. During each interaction, a weighted differentiable pairwise loss is constructed in PDGD and the gradient is directly estimated by document pairs preferences inferred from user clicks. PDGD has been empirically found to be significantly better than traditional OLTR methods in terms of final convergence, learning speed and user experience during optimization, making PDGD the current state-of-the-art method for OLTR~\cite{oosterhuis2018differentiable,jagerman2019model,zhuang2020counterfactual}.
 

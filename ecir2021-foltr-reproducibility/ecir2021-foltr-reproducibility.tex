@@ -13,7 +13,7 @@
 \usepackage{hyperref}
 \usepackage{scalerel}
 \usepackage{float}
-\usepackage{amsmath, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry} %amsthm
+\usepackage{amsmath, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry} 
 \usepackage{bm}
 \usepackage{cite}
 %\usepackage{subfigure}
@@ -22,57 +22,43 @@
 \usepackage{enumitem}
 \setlist[itemize]{leftmargin=40pt}
 \usepackage{subcaption}
+\usepackage[misc]{ifsym}
 
-%\lstset{
-%	basicstyle=\scriptsize\ttfamily,
-%	columns=fullflexible,
-%	frame=single,
-%	moredelim=[is][\itshape]{[*}{*]},
-%	breaklines=true,
-%	breakindent=0pt
-%}
-
+\renewcommand\UrlFont{\color{blue}\rmfamily}
 \newcommand{\todo}[1]{}
 \renewcommand{\todo}[1]{{\color{red}{#1}}}
 
 \newcommand{\customsymbol}[1]{\scalerel*{\includegraphics{#1}}{`}}
 \begin{document}
 
-%\title{An Experimental Study for Federated Online Learning to Rank with Evolution Strategies}
-
 \title{Federated Online Learning to Rank with Evolution Strategies: A Reproducibility Study}
 
+\author{Shuyi Wang\textsuperscript{(\Letter)}\orcidID{0000-0002-4467-5574}
+	\and 
+	Shengyao Zhuang\orcidID{0000-0002-6711-0955}
+	\and 
+	Guido Zuccon\orcidID{0000-0003-0271-5563}}
+\authorrunning{S. Wang et al.}
 
-\author{Shuyi Wang \and Shengyao Zhuang \and Guido Zuccon }
-
-\institute{The University of Queensland, St Lucia, Australia\\ \email{\{shuyi.wang, s.zhuang, g.zuccon@uq.edu.au\}}}
-
+\institute{The University of Queensland, St Lucia, Australia\\ \email{\{shuyi.wang, s.zhuang, g.zuccon\}@uq.edu.au}}
 
 \maketitle
 
 \begin{abstract}
 Online Learning to Rank (OLTR) optimizes ranking models using implicit users' feedback, such as clicks, directly manipulating search engine results in production. This process requires OLTR methods to collect user queries and clicks; current methods are not suited to situations in which users want to maintain their privacy, i.e. not sharing data, queries and clicks. 
 
-Recently, the federated OLTR with evolution strategies (FOLTR-ES) method has been proposed to provide a solution that can meet a number of users' privacy requirements. Specifically, this method exploits the federated learning framework and $\epsilon$-local differential privacy. However, the original research study that introduced this method only evaluated it on a small LTR dataset and with no conformity with respect to current OLTR evaluation practice. It further did not explore specific parameters of the method, such as the number of clients involved in the federated learning process, and did not compare FOLTR-ES with the current state-of-the-art OLTR method. This paper aims to remedy to this gap. 
+Recently, the federated OLTR with evolution strategies (FOLtR-ES) method has been proposed to provide a solution that can meet a number of users' privacy requirements. Specifically, this method exploits the federated learning framework and $\epsilon$-local differential privacy. However, the original research study that introduced this method only evaluated it on a small Learning to Rank (LTR) dataset and with no conformity with respect to current OLTR evaluation practice. It further did not explore specific parameters of the method, such as the number of clients involved in the federated learning process, and did not compare FOLtR-ES with the current state-of-the-art OLTR method. This paper aims to remedy to this gap. 
 
-Our findings question whether FOLTR-ES is a mature method that can be considered in practice: its effectiveness largely varies across datasets, click types, ranker types and settings. Its performance is also far from that of current state-of-the-art OLTR, questioning whether the maintained of privacy guaranteed by FOLTR-ES is not achieved by seriously undermining search effectiveness and user experience. 
+Our findings question whether FOLtR-ES is a mature method that can be considered in practice: its effectiveness largely varies across datasets, click types, ranker types and settings. Its performance is also far from that of current state-of-the-art OLTR, questioning whether the maintained of privacy guaranteed by FOLtR-ES is not achieved by seriously undermining search effectiveness and user experience. 
 
-%A recent work by Kharitonov~\cite{kharitonov2019federated} proposes a learning algorithm called FOLtR-ES that conducts Federated Machine Learning paradigm into OLTR in order to provide a solution in user privacy guarantees. This work develops a privatization procedure to guarantee $\epsilon$-local differential privacy.
-
-%Our experiments study the reproducibility of FOLtR-ES using MSLR-WEB10K and Yahoo! Webscope datasets. For a better study in performance of FOLtR-ES comparing to other widely-used OLTR methods, we train Pairwise Differentiable Gradient Descent (PDGD) models as baselines. We also extend the online optimization metric to Discounted Cumulative Gain and use nDCG as evaluation metric to study the consistency of ranking performance in FOLtR-ES. Our experiments show FOLtR-ES can generalise on larger datasets and other common online metric. Although FOLtR-ES preserves users' privacy to some degree, it lags behind the OLTR baseline in terms of ranking performance. 
-
-	\keywords{Online learning to rank; Federated machine learning; Differential privacy}
+\keywords{Online learning to rank \and Federated machine learning \and Differential privacy}
 \end{abstract}
-
 
 \input{sections/introduction.tex}
 \input{sections/method.tex}
-
 \input{sections/evaluation.tex}
-
 \input{sections/results.tex}
 \input{sections/related_works.tex}
-
 \input{sections/conclusions.tex}
 
 \makeatletter
@@ -81,12 +67,8 @@ Our findings question whether FOLTR-ES is a mature method that can be considered
 
 \subsubsection*{Acknowledgements.} Shuyi Wang is sponsored by a China Scholarship Council (CSC) scholarship. Dr Guido Zuccon is the recipient of an Australian Research Council DECRA Research Fellowship (DE180101579) and a Google Faculty Award. 
 
-
 \bibliographystyle{splncs04}
 \bibliography{ecir2021-foltr-reproducibility}
-
-
-%\end{thebibliography}
 
 \end{document}
 
