@@ -6,21 +6,22 @@ For answering RQ1 we replicate the results obtained by Kharitonov~\cite{khariton
 \begin{figure}[t]
 	\centering
 	\begin{subfigure}{1\textwidth}
+		\centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ1/mq2007_foltr_c2000_ps.png}
 		\caption{Mean batch MaxRR for MQ2007.}
 		\label{fig:mq2007-rq1}
 	\end{subfigure}
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ1/mslr10k_foltr_c2000_ps.png}
 		\caption{Mean batch MaxRR for MSLR-WEB10k.}
 		\label{fig:mslr10k-rq1}
 	\end{subfigure}
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ1/yahoo_foltr_c2000_ps.png}
 		\caption{Mean batch MaxRR for Yahoo!.}
 		\label{fig:yahoo-rq1}
 	\end{subfigure}
-	\caption{{\color{red}{Results for RQ1: performance of FOLtR-ES across datasets under three different click models (averaged across all dataset splits).}} \label{fig:RQ1}}
+	\caption{Results for RQ1: performance of FOLtR-ES across datasets under three different click models (averaged across all dataset splits). \label{fig:RQ1}}
 \end{figure}
 
 Figure~\ref{fig:mq2007-rq1} reports the results obtained by FOLtR-ES on the MQ2007 dataset\footnote{Similar results were obtained for MQ2008 and are omitted for space reasons.} with respect to the three click models considered, various settings for the privatization parameter $p$, and the two FOLtR-ES methods (linear and neural). Our results fully replicate those of Kharitonov~\cite{kharitonov2019federated} and indicate the following findings: (1) FOLtR-ES allows for the iterative learning of effective rankers; (2) high values of $p$ (lesser privacy) provide higher effectiveness; 
@@ -29,21 +30,21 @@ Figure~\ref{fig:mq2007-rq1} reports the results obtained by FOLtR-ES on the MQ20
 However, not all these findings are applicable to the results obtained when considering MSLR-WEB10k and Yahoo!, which are displayed in Figures~\ref{fig:mslr10k-rq1} and~\ref{fig:yahoo-rq1}. In particular, we observe that (1) the results for MSLR-WEB10k (and to a lesser extent also for Yahoo!) obtained with the informational click model are very unstable, and, regardless of the click model, FOLtR-ES requires more data than with MQ2007/2008 to arrive at a stable performance, when it does; (2) the neural ranker is less effective than the linear ranker, especially on MSLR-WEB10k. We believe these findings are due to the fact that query-document pairs in MSLR-WEB10k and Yahoo! are represented by a larger number of features than in MQ2007/2008. Thus, more data is required for effective training, especially for the neural model; we also note that FOLtR-ES is largely affected by noisy clicks in MSLR-WEB10k. 
 
 \subsection{RQ2: Effect of number of clients on FOLtR-ES}
-To answer RQ2 we vary the number of clients involved in FOLtR-ES; we investigate the values \{50, 1,000, 2,000\}. Kharitonov~\cite{kharitonov2019federated} used 2,000 in the original experiments, and the impact of the number {\color{red}{has not been studied}}. To be able to fairly compare results across number of clients, we fixed the total number of ranker updates to 2,000,000; we also set $B = 4$ and $p=0.9$. We perform these experiments on all three datasets considered in this paper, but we omit to report results for Yahoo! due to space limitations. 
+To answer RQ2 we vary the number of clients involved in FOLtR-ES; we investigate the values \{50, 1,000, 2,000\}. Kharitonov~\cite{kharitonov2019federated} used 2,000 in the original experiments, and the impact of the number of clients has not been studied. To be able to fairly compare results across number of clients, we fixed the total number of ranker updates to 2,000,000; we also set $B = 4$ and $p=0.9$. We perform these experiments on all three datasets considered in this paper, but we omit to report results for Yahoo! due to space limitations. 
 
 \begin{figure}[t]
 	\centering
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ2/mq2007_foltr_client_both_p0.9.png}
 		\caption{Mean batch MaxRR for MQ2007.}
 		\label{fig:mq2007-rq2}
 	\end{subfigure}
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ2/mslr10k_foltr_client_both_p0.9.png}
 		\caption{Mean batch MaxRR for MSLR-WEB10k.}
 		\label{fig:mslr10k-rq2}
 	\end{subfigure}
-	\caption{{\color{red}{Results for RQ2: performance of FOLtR-ES with respect to number of clients (averaged across all dataset splits).}} \label{fig:RQ2}} 
+	\caption{Results for RQ2: performance of FOLtR-ES with respect to number of clients (averaged across all dataset splits). \label{fig:RQ2}} 
 \end{figure}
 
 The results of these experiments are reported in Figure~\ref{fig:RQ2}, and they are mixed. For MQ2007, the number of clients have little effect on the neural ranker used in FOLtR-ES, although when informational clicks are provided this ranker is less stable, although often more effective, if very few clients (50) are used. Having just 50 clients, instead, severally hits the performance of the linear ranker, when compared with 1,000 or 2,000 clients. The findings on MSLR-WEB10k, however, are different. In this dataset, a smaller number of clients (50), is generally better than larger numbers, both for linear and neural ranker. An exception to this is when considering navigational clicks: in this case the linear ranker obtains by far the best performance with a small number of clients, but the neural ranker obtains the worst performance. This suggest that the number of clients greatly affects FOLtR-ES: but trends are not consistent across click types and datasets. 
@@ -54,17 +55,17 @@ We perform these experiments on all three datasets considered in this paper, but
 
 \begin{figure}[t]
 	\centering
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ3/mq2007_foltr_PDGD_mrr_c2000_p1.0.png}
 		\caption{Mean batch MaxRR for MQ2007.}
 		\label{fig:mq2007-rq3}
 	\end{subfigure}
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ3/mslr10k_foltr_PDGD_mrr_c2000_p1.0.png}
 		\caption{Mean batch MaxRR for MSLR-WEB10k}
 		\label{fig:mslr10k-rq3}
 	\end{subfigure}
-	\caption{{\color{red}{Results for RQ3: performance of FOLtR-ES and PDGD across datasets with privatization parameter $p=1$ and 2,000 clients (averaged across all dataset splits).}} \label{fig:RQ3}} 
+	\caption{Results for RQ3: performance of FOLtR-ES and PDGD across datasets with privatization parameter $p=1$ and 2,000 clients (averaged across all dataset splits). \label{fig:RQ3}} 
 \end{figure}
 
 Results are shown in Figure~\ref{fig:RQ3}: regardless of linear or neural ranker, FOLtR-ES is less effective than PDGD. The gap in performance is greater in larger datasets like MSLR-WEB10k than in the smaller MQ2007/2008. This gap becomes even bigger, especially for the first iterations, if the PDGD ranker was updated after each iteration (not shown here), rather than after a batch has been completed. This highlights that FOLtR-ES has the merit of being the first privacy preserving federated OLTR approach available; however, more work is needed to improve the performance of FOLtR based methods so as to close the gap between privacy-oriented approaches and centralise approaches that do not consider user privacy.
@@ -74,35 +75,35 @@ In the original work and in the sections above, FOLtR-ES was evaluated using Max
 
 \begin{figure}[t]
 	\centering
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ4/mq2007_foltr_online nDCG_both_c2000_ps.png}
 		\caption{Mean batch nDCG@10 for MQ2007.}
 		\label{fig:mq2007-rq4}
 	\end{subfigure}
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ4/mslr10k_foltr_online nDCG_both_c2000_ps.png}
 		\caption{Mean batch nDCG@10 for MSLR-WEB10k.}
 		\label{fig:mslr10k-rq4}
 	\end{subfigure}
-	\caption{{\color{red}{Results for RQ4: performance of FOLtR-ES in terms of online nDCG@10 computed using relevance labels and the SERPs used for obtaining user iterations (averaged across all dataset splits).}} \label{fig:RQ4}} 
+	\caption{Results for RQ4: performance of FOLtR-ES in terms of online nDCG@10 computed using relevance labels and the SERPs used for obtaining user iterations (averaged across all dataset splits). \label{fig:RQ4}} 
 \end{figure}
 
 \begin{figure}[t]
 	\centering
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ4/mq2007_foltr_PDGD_offline nDCG_c2000_p1.0.png}
 		\caption{Mean batch nDCG@10 for MQ2007.}
 		\label{fig:mq2007-rq4-offline}
 	\end{subfigure}
-	\begin{subfigure}{1\textwidth}
+	\begin{subfigure}{1\textwidth} \centering
 		\includegraphics[width=13cm, height=3.5cm]{images/RQ4/mslr10k_foltr_PDGD_offline nDCG_c2000_p1.0.png}
 		\caption{Mean batch nDCG@10 for MSLR-WEB10k.}
 		\label{fig:mslr10k-rq4-offline}
 	\end{subfigure}
-	\caption{{\color{red}{Results for RQ4: performance of FOLtR-ES and PDGD in terms of offline nDCG@10 with privatization parameter $p=1$ and 2,000 clients (averaged across all dataset splits).}} \label{fig:RQ4-offline}} 
+	\caption{Results for RQ4: performance of FOLtR-ES and PDGD in terms of offline nDCG@10 with privatization parameter $p=1$ and 2,000 clients (averaged across all dataset splits).\label{fig:RQ4-offline}} 
 \end{figure}
 
-Results are reported in Figure~\ref{fig:RQ4}. It is interesting to compare these plots with those in Figure~\ref{fig:RQ1}, that relate to the unusual (for OLTR) evaluation setting used in the original FOLtR-ES work. By comparing the figures, we note that for MQ2007, FOLtR-ES can effectively learn rankers for perfect and navigational clicks. However, when the clicks become noisier (informational clicks), then FOLtR-ES learning is effective for the linear ranker but no learning occurs for the neural ranker: this is unlikely in the evaluation settings of the original work (Figure~\ref{fig:RQ1}). We note this finding repeating also for MSLR-WEB10k, but this time this affects both linear and neural rankers; we also note that the online performance in MSLR-WEB10k on navigational clicks are also quite unstable and exhibit little learning for specific values of $p$ and ranker type. {\color{red}{The online performance in MSLR10k on informational clicks (the noisiest clicks) even shows a decreasing trend as the update grows.}}
+Results are reported in Figure~\ref{fig:RQ4}. It is interesting to compare these plots with those in Figure~\ref{fig:RQ1}, that relate to the unusual (for OLTR) evaluation setting used in the original FOLtR-ES work. By comparing the figures, we note that for MQ2007, FOLtR-ES can effectively learn rankers for perfect and navigational clicks. However, when the clicks become noisier (informational clicks), then FOLtR-ES learning is effective for the linear ranker but no learning occurs for the neural ranker: this is unlikely in the evaluation settings of the original work (Figure~\ref{fig:RQ1}). We note this finding repeating also for MSLR-WEB10k, but this time this affects both linear and neural rankers; we also note that the online performance in MSLR-WEB10k on navigational clicks is also quite unstable and exhibits little learning for specific values of $p$ and ranker type. The online performance on MSLR10k for informational clicks (noisiest clicks) even exhibits a decreasing trend as iterations increase.
 
 We further investigate the performance of FOLtR-ES with respect to offline nDCG@10. Results are shown in Figure~\ref{fig:RQ4-offline}, and are plotted along with the offline nDCG@10 of PDGD for additional context. Also the offline performance confirm that FOLtR-ES does not provide stable learning across click settings, datasets and ranker types. We also note that the performance of PDGD are sensibly higher than that of FOLtR-ES, apart for the neural ranker on MQ2007 when perfect and navigational clicks are considered. 
 
