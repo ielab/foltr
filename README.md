@@ -33,6 +33,16 @@ To reproduce our experiments reuslt, set up corresponding parameters and run fil
 python foltr_reproduce_run.py
 ```
 
+## Citation
+If you use this code to produce results for your scientific publication, or if you share a copy or fork, please refer to our ECIR2021 paper:
+```
+@inproceedings{wang2021federated,
+	author = {Wang, Shuyi and Zhuang, Shengyao and Zuccon, Guido},
+	booktitle = {European Conference on Information Retrieval},
+	title = {Federated Online Learning to Rank with Evolution Strategies: A Reproducibility Study},
+	year = {2021}}
+```
+
 ## OLTR baselines
 We use Pairwise Differentiable Gradient Descent (PDGD) as the baselines. This method is proposed by Oosterhuis and de Rijke at CIKM 2018 [https://dl.acm.org/doi/pdf/10.1145/3269206.3271686](https://dl.acm.org/doi/pdf/10.1145/3269206.3271686).
 
